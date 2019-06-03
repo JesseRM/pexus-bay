@@ -1,5 +1,6 @@
 const cheerio = require('cheerio');
 const getHTML = require('../util/html');
+const axios = require('axios');
 
 const getPixabay = (req, res) => {
   const url = `https://pixabay.com/images/search/${req.params.term}/?pagi=${req.params.page}`;
@@ -55,8 +56,30 @@ const getPexels = (req, res) => {
   });
 }
 
+const getUnsplash = ((req, res) => {
+  const url = `https://unsplash.com/napi/search/photos?query=${req.params.term}&xp=&per_page=30&page=${req.params.page}`;
+  const imgSources = {
+    low: [],
+    medium: [],
+    high: []
+  }
+
+  axios.get(url).then((imagesJSON) => {
+    const images = imagesJSON['data']['results'];
+
+    for (let image in images) {
+      imgSources.low.push(images[image]['urls']['small']);
+      imgSources.medium.push(images[image]['urls']['regular']);
+      imgSources.high.push(images[image]['urls']['full']);
+    }
+    
+    res.send(imgSources);
+  });
+});
+
 
 module.exports = {
   getPixabay: getPixabay,
-  getPexels: getPexels
+  getPexels: getPexels,
+  getUnsplash: getUnsplash
 }
