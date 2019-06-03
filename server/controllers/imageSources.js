@@ -1,5 +1,4 @@
 const cheerio = require('cheerio');
-const getHTML = require('../util/html');
 const axios = require('axios');
 
 const getPixabay = (req, res) => {
@@ -10,11 +9,10 @@ const getPixabay = (req, res) => {
     medium: []
   }
   
-  getHTML(url).then((html) => {
-    const $ = cheerio.load(html);
+  axios.get(url).then((html) => {
+    const $ = cheerio.load(html.data);
 
     $('.item img[data-lazy]').each((i, elem) => {
-      //Set URLs for different sized images
       const thumb = elem['attribs']['data-lazy'];
       const low = thumb.replace(/_340/, '_480');
       const medium = thumb.replace(/__340/, '_1280');
@@ -37,8 +35,8 @@ const getPexels = (req, res) => {
     high: []
   }
 
-  getHTML(url).then((html) => {
-    const $ = cheerio.load(html);
+  axios.get(url).then((html) => {
+    const $ = cheerio.load(html.data);
 
     $('.photo-item__img').each((i, elem) => {
       const thumb = elem['attribs']['src'];
