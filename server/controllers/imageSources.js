@@ -27,7 +27,36 @@ const getPixabay = (req, res) => {
   });
 }
 
+const getPexels = (req, res) => {
+  const url = `https://www.pexels.com/search/${req.params.term}/?page=${req.params.page}`;
+  const imgSources = {
+    thumb: [],
+    low: [],
+    medium: [],
+    high: []
+  }
+
+  getHTML(url).then((html) => {
+    const $ = cheerio.load(html);
+
+    $('.photo-item__img').each((i, elem) => {
+      const thumb = elem['attribs']['src'];
+      const low = thumb.replace('dpr=1', 'dpr=3');
+      const medium = thumb.replace('dpr=1&w=500', 'dpr=2&h=750&w=1260');
+      const high = thumb.split('?')[0];
+      
+      imgSources.thumb.push(thumb);
+      imgSources.low.push(low);
+      imgSources.medium.push(medium);
+      imgSources.high.push(high);
+    });
+
+    res.send(imgSources);
+  });
+}
 
 
-
-module.exports = getPixabay;
+module.exports = {
+  getPixabay: getPixabay,
+  getPexels: getPexels
+}
