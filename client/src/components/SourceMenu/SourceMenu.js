@@ -3,6 +3,9 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import PixabayIcon from '../Icons/PixabayIcon/PixabayIcon';
+import PexelsIcon from '../Icons/PexelsIcon/PexelsIcon';
+import UnsplashIcon from '../Icons/UnsplashIcon/UnsplashIcon';
 
 export default function SourceMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -29,9 +32,17 @@ export default function SourceMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Pixabay</MenuItem>
-        <MenuItem onClick={handleClose}>Pexels</MenuItem>
-        <MenuItem onClick={handleClose}>Unsplash</MenuItem>
+        <MenuItem onClick={handleClose}>
+          <PixabayIcon />
+          Pixabay
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <PexelsIcon />
+          Pexels
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <UnsplashIcon />
+          Unsplash</MenuItem>
       </Menu>
     </React.Fragment>
   );
