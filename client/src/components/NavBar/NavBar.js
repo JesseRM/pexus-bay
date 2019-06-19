@@ -18,7 +18,7 @@ const userStyles = makeStyles((theme) => ({
 }));
 
 
-function NavBar() {
+function NavBar(props) {
   const classes = userStyles();
   
   return (
@@ -28,7 +28,7 @@ function NavBar() {
           <MenuIcon />
         </IconButton>
         <Typography className={classes.title} variant="h6" noWrap>Pexus Bay</Typography>
-        <SearchBar />
+        <SearchBar setTerm={props.setTerm} getImgURIs={props.getImgURIs}/>
         <SourceMenu />
       </Toolbar>
     </AppBar>
