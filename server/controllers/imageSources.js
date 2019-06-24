@@ -6,7 +6,8 @@ const getPixabay = (req, res) => {
   const imgSources = {
     thumb: [],
     low: [],
-    medium: []
+    medium: [],
+    high: []
   }
   
   axios.get(url).then((html) => {
@@ -57,6 +58,7 @@ const getPexels = (req, res) => {
 const getUnsplash = ((req, res) => {
   const url = `https://unsplash.com/napi/search/photos?query=${req.params.term}&xp=&per_page=30&page=${req.params.page}`;
   const imgSources = {
+    thumb: [],
     low: [],
     medium: [],
     high: []
@@ -66,6 +68,7 @@ const getUnsplash = ((req, res) => {
     const images = imagesJSON['data']['results'];
 
     for (let image in images) {
+      imgSources.thumb.push(images[image]['urls']['small']);
       imgSources.low.push(images[image]['urls']['small']);
       imgSources.medium.push(images[image]['urls']['regular']);
       imgSources.high.push(images[image]['urls']['full']);
