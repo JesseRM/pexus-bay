@@ -33,7 +33,7 @@ export default function SearchBar(props) {
 
   function handleEnter(event) {
     if (event.keyCode === 13) {
-      props.getImgURIs();
+      props.getImgURIs(1);
     }
   }
   
