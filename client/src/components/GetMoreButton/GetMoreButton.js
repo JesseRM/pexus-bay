@@ -7,7 +7,6 @@ export default function GetMoreButton(props) {
   }
 
   function handleClick() {
-    console.log(props.page);
     props.setPage(props.page + 1).then((page) => props.getImgURIs(page));
   }
 
