@@ -28,8 +28,8 @@ function NavBar(props) {
           <MenuIcon />
         </IconButton>
         <Typography className={classes.title} variant="h6" noWrap>Pexus Bay</Typography>
-        <SearchBar setTerm={props.setTerm} getImgURIs={props.getImgURIs}/>
-        <SourceMenu />
+        <SearchBar setTerm={props.setTerm} getImgURIs={props.getImgURIs} setGetMoreBtn={props.setGetMoreBtn} />
+        <SourceMenu setSource={props.setSource} setGetMoreBtn={props.setGetMoreBtn} />
       </Toolbar>
     </AppBar>
   )

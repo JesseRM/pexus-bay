@@ -7,9 +7,10 @@ import useAsyncState from '../../Util/asyncState';
 
 export default function Home() {
   const [imgURIs, setImgURIs] = useState(null);
-  const [source, setSource] = useState('unsplash');
+  const [source, setSource] = useState('pixabay');
   const [page, setPage] = useAsyncState(1);
   const [term, setTerm] = useState('');
+  const [getMoreBtn, setGetMoreBtn] = useState(false);
 
   function getImgURIs(page) {
     axios.get(`/api/images/${source}/${term}/${page}`).then((URIs) => {
@@ -32,9 +33,9 @@ export default function Home() {
   
   return (
     <React.Fragment>
-      <NavBar setTerm={setTerm} getImgURIs={getImgURIs} />
+      <NavBar setTerm={setTerm} getImgURIs={getImgURIs} setSource={setSource} setGetMoreBtn={setGetMoreBtn} />
       <Pictures imgURIs={imgURIs} />
-      <GetMoreButton imgURIs={imgURIs} getImgURIs={getImgURIs} setPage={setPage} page={page} />
+      <GetMoreButton getMoreBtn={getMoreBtn} getImgURIs={getImgURIs} setPage={setPage} page={page} />
     </React.Fragment>
   )
 }
