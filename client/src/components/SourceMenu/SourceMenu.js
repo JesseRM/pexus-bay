@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
   menuItem: {
     backgroundColor: 'rgba(101, 164, 157, 0.4)'
   }
-}))
+}));
 
 export default function SourceMenu(props) {
   const classes = useStyles();
