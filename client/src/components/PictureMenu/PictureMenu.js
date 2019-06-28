@@ -1,15 +1,31 @@
-import React from 'react';
-import IconButton from '@material-ui/core/IconButton';
+import React, { useState, useEffect } from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { makeStyles } from '@material-ui/core';
 
-export default function PictureMenu() {
-  
+export default function PictureMenu(props) {
+  const [anchorEl, setAnchorEl] = useState(props.anchorElement);
+
+  function handleClose() {
+    props.setAnchorEl(null);
+  }
+
+  useEffect(() => {
+    setAnchorEl(props.anchorElement);
+  }, [props.anchorElement]);
+
   return (
-    <IconButton>
-      <MoreVertIcon />
-    </IconButton>
+    <Menu
+      anchorEl={anchorEl}
+      open={Boolean(anchorEl)}
+      onClose={handleClose}
+      keepMounted
+    >
+      <MenuItem>
+        Download
+      </MenuItem>
+      <MenuItem>
+        Add to Selected
+      </MenuItem>
+    </Menu>
   )
 }
