@@ -5,7 +5,7 @@ import Pictures from '../../components/Pictures/Pictures';
 import GetMoreButton from '../../components/GetMoreButton/GetMoreButton';
 import useAsyncState from '../../Util/asyncState';
 
-export default function Home() {
+export default function Home(props) {
   const [imgURIs, setImgURIs] = useState(null);
   const [source, setSource] = useState('pixabay');
   const [page, setPage] = useAsyncState(1);
@@ -33,9 +33,20 @@ export default function Home() {
   
   return (
     <React.Fragment>
-      <NavBar setTerm={setTerm} getImgURIs={getImgURIs} setSource={setSource} setGetMoreBtn={setGetMoreBtn} />
+      <NavBar 
+        setTerm={setTerm} 
+        getImgURIs={getImgURIs} 
+        setSource={setSource} 
+        setGetMoreBtn={setGetMoreBtn} 
+        setDrawerState={props.setDrawerState}
+      />
       <Pictures imgURIs={imgURIs} />
-      <GetMoreButton getMoreBtn={getMoreBtn} getImgURIs={getImgURIs} setPage={setPage} page={page} />
+      <GetMoreButton 
+        getMoreBtn={getMoreBtn} 
+        getImgURIs={getImgURIs} 
+        setPage={setPage} 
+        page={page} 
+      />
     </React.Fragment>
   )
 }
