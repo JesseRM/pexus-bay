@@ -24,7 +24,7 @@ function NavBar(props) {
   return (
     <AppBar position="static">
       <Toolbar>
-        <IconButton>
+        <IconButton onClick={() => props.setDrawerState(true)}>
           <MenuIcon />
         </IconButton>
         <Typography className={classes.title} variant="h6" noWrap>Pexus Bay</Typography>
