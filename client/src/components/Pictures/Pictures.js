@@ -10,7 +10,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginTop: '64px'
   },
   card: {
     maxWidth: 200,
