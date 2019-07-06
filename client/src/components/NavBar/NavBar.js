@@ -22,7 +22,7 @@ function NavBar(props) {
   const classes = userStyles();
   
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
         <IconButton onClick={() => props.setDrawerState(true)}>
           <MenuIcon />
