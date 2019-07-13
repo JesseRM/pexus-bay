@@ -30,27 +30,38 @@ export default function Pictures(props) {
 
   function handleClick(event) {
     setAnchorEl(event.currentTarget);
+    props.setClickedElIndex(event.currentTarget.attributes['data-index'].value);
   }
   
-  if (props.imgURIs) {
-    picCards = props.imgURIs.thumb.map((thumb, index) => {
-      
-      return (
+  if (props.imgURIs.size) {
+    picCards = picCards || [];
+    let index = 0;
+    
+    props.imgURIs.forEach((img) => {
+      picCards.push((
         <Card className={classes.card} key={index}>
-          <CardMedia className={classes.media} image={thumb}>
-            <IconButton onClick={handleClick}>
+          <CardMedia className={classes.media} image={img.thumb} >
+            <IconButton onClick={handleClick} data-index={index}>
               <MoreVertIcon />
             </IconButton>
           </CardMedia>
         </Card>
-      )
+      ));
+
+      index++;
     });
   }
  
   return (
     <div className={classes.root}>
       {picCards}
-      <PictureMenu anchorElement={anchorEl} setAnchorEl={setAnchorEl} />
+      <PictureMenu 
+        anchorElement={anchorEl} 
+        setAnchorEl={setAnchorEl} 
+        setSelectedImgs={props.setSelectedImgs} 
+        clickedElIndex={props.clickedElIndex}
+        imgURIs={props.imgURIs}
+      />
     </div>
   )
 }
