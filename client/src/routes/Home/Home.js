@@ -6,29 +6,26 @@ import GetMoreButton from '../../components/GetMoreButton/GetMoreButton';
 import useAsyncState from '../../Util/asyncState';
 
 export default function Home(props) {
-  const [imgURIs, setImgURIs] = useState(null);
   const [source, setSource] = useState('pixabay');
   const [page, setPage] = useAsyncState(1);
   const [term, setTerm] = useState('');
   const [getMoreBtn, setGetMoreBtn] = useState(false);
+  const [clickedElIndex, setClickedElIndex] = useState(null);
 
   function getImgURIs(page) {
     axios.get(`/api/images/${source}/${term}/${page}`).then((URIs) => {
-      setImgURIs((prevURIs) => {
+      props.setImgURIs((prevURIs) => {
+        let uris;
+        
         if (page !== 1) {
-          const updatedURIs = {
-            thumb: [...prevURIs.thumb, ...URIs.data.thumb],
-            low: [...prevURIs.low, ...URIs.data.low],
-            medium: [...prevURIs.medium, ...URIs.data.medium],
-            high: [...prevURIs.high, ...URIs.data.high]
-          }
-
-          return updatedURIs;
+          uris = new Set([...prevURIs, ...URIs.data]);
+        } else {
+          uris = new Set([...URIs.data]);
         }
-       
-        return URIs.data;
+
+        return uris;
       });
-    })
+    }); 
   }
   
   return (
@@ -40,7 +37,12 @@ export default function Home(props) {
         setGetMoreBtn={setGetMoreBtn} 
         setDrawerState={props.setDrawerState}
       />
-      <Pictures imgURIs={imgURIs} />
+      <Pictures 
+        imgURIs={props.imgURIs}
+        setClickedElIndex={setClickedElIndex} 
+        setSelectedImgs={props.setSelectedImgs}
+        clickedElIndex={clickedElIndex}
+      />
       <GetMoreButton 
         getMoreBtn={getMoreBtn} 
         getImgURIs={getImgURIs} 
