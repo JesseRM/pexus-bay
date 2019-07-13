@@ -6,16 +6,18 @@ import TopMenu from './components/TopMenu/TopMenu';
 
 function App() {
   const [drawerState, setDrawerState] = useState(false);
-  
+  const [imgURIs, setImgURIs] = useState(new Set());
+  const [selectedImgs, setSelectedImgs] = useState(null);
+
   return (
     <BrowserRouter>
       <Route 
         exact path='/' 
-        render={() => <Home setDrawerState={setDrawerState} />} 
+        render={() => <Home imgURIs={imgURIs} setImgURIs={setImgURIs} setDrawerState={setDrawerState} setSelectedImgs={setSelectedImgs} />} 
       />
       <Route 
         path='/selected' 
-        render={() => <Selected setDrawerState={setDrawerState} />} 
+        render={() => <Selected imgURIs={imgURIs} setDrawerState={setDrawerState} />} 
       />
       <TopMenu drawerState={drawerState} setDrawerState={setDrawerState} />
     </BrowserRouter>  
