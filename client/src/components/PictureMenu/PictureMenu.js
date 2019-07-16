@@ -24,6 +24,17 @@ export default function PictureMenu(props) {
     setAnchorEl(props.anchorElement);
   }, [props.anchorElement]);
 
+  function handleSelectClick() {
+    props.setSelectedImgs((selectedImgs) => {
+      const selectedImg = [...props.imgURIs][props.clickedElIndex];
+      selectedImgs.add(selectedImg);
+
+      return selectedImgs;
+    });
+
+    handleClose();
+  }
+
   return (
     <Menu
       anchorEl={anchorEl}
@@ -35,7 +46,7 @@ export default function PictureMenu(props) {
         <DownloadIcon className={classes.icon} />
         Download
       </MenuItem>
-      <MenuItem>
+      <MenuItem onClick={handleSelectClick}>
         <AddCircleIcon className={classes.icon} />
         Add to Selected
       </MenuItem>
