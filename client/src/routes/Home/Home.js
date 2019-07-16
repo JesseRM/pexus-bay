@@ -3,17 +3,14 @@ import NavBar from '../../components/NavBar/NavBar';
 import axios from 'axios';
 import Pictures from '../../components/Pictures/Pictures';
 import GetMoreButton from '../../components/GetMoreButton/GetMoreButton';
-import useAsyncState from '../../Util/asyncState';
+
 
 export default function Home(props) {
-  const [source, setSource] = useState('pixabay');
-  const [page, setPage] = useAsyncState(1);
-  const [term, setTerm] = useState('');
-  const [getMoreBtn, setGetMoreBtn] = useState(false);
+  const [getMoreBtn, setGetMoreBtn] = useState(props.imgURIs.size ? true : false);
   const [clickedElIndex, setClickedElIndex] = useState(null);
 
   function getImgURIs(page) {
-    axios.get(`/api/images/${source}/${term}/${page}`).then((URIs) => {
+    axios.get(`/api/images/${props.source}/${props.term}/${page}`).then((URIs) => {
       props.setImgURIs((prevURIs) => {
         let uris;
         
@@ -31,9 +28,9 @@ export default function Home(props) {
   return (
     <React.Fragment>
       <NavBar 
-        setTerm={setTerm} 
+        setTerm={props.setTerm} 
         getImgURIs={getImgURIs} 
-        setSource={setSource} 
+        setSource={props.setSource} 
         setGetMoreBtn={setGetMoreBtn} 
         setDrawerState={props.setDrawerState}
       />
@@ -46,8 +43,8 @@ export default function Home(props) {
       <GetMoreButton 
         getMoreBtn={getMoreBtn} 
         getImgURIs={getImgURIs} 
-        setPage={setPage} 
-        page={page} 
+        setPage={props.setPage} 
+        page={props.page} 
       />
     </React.Fragment>
   )
