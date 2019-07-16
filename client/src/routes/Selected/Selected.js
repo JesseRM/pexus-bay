@@ -7,7 +7,7 @@ export default function Selected(props) {
   return (
     <div>
       <GenNavBAr setDrawerState={props.setDrawerState} />
-      <Pictures />
+      <Pictures imgURIs={props.imgURIs} />
     </div>
   )
 }
