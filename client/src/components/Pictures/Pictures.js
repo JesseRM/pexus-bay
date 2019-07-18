@@ -26,11 +26,12 @@ const useStyles = makeStyles(theme => ({
 export default function Pictures(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
+  const [clickedImg, setClickedImg] = useState(null);
   let picCards;
 
   function handleClick(event) {
     setAnchorEl(event.currentTarget);
-    props.setClickedElIndex(event.currentTarget.attributes['data-index'].value);
+    setClickedImg([...props.imgURIs][event.currentTarget.attributes['data-index'].value])
   }
   
   if (props.imgURIs.size) {
@@ -59,8 +60,8 @@ export default function Pictures(props) {
         anchorElement={anchorEl} 
         setAnchorEl={setAnchorEl} 
         setSelectedImgs={props.setSelectedImgs} 
-        clickedElIndex={props.clickedElIndex}
         imgURIs={props.imgURIs}
+        clickedImg={clickedImg}
       />
     </div>
   )

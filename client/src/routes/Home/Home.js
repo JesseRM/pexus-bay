@@ -7,7 +7,6 @@ import GetMoreButton from '../../components/GetMoreButton/GetMoreButton';
 
 export default function Home(props) {
   const [getMoreBtn, setGetMoreBtn] = useState(props.imgURIs.size ? true : false);
-  const [clickedElIndex, setClickedElIndex] = useState(null);
 
   function getImgURIs(page) {
     axios.get(`/api/images/${props.source}/${props.term}/${page}`).then((URIs) => {
@@ -36,9 +35,7 @@ export default function Home(props) {
       />
       <Pictures 
         imgURIs={props.imgURIs}
-        setClickedElIndex={setClickedElIndex} 
         setSelectedImgs={props.setSelectedImgs}
-        clickedElIndex={clickedElIndex}
       />
       <GetMoreButton 
         getMoreBtn={getMoreBtn} 
