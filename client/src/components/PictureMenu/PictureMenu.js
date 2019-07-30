@@ -60,7 +60,8 @@ export default function PictureMenu(props) {
       <DownloadMenu 
         anchorEl={anchorEl} 
         downloadMenuOpen={downloadMenuOpen} 
-        setDownloadMenuOpen={setDownloadMenuOpen}  
+        setDownloadMenuOpen={setDownloadMenuOpen}
+        clickedImg={props.clickedImg}  
       />
     </React.Fragment>
   )

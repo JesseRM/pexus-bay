@@ -18,7 +18,7 @@ export default function Home(props) {
         } else {
           uris = new Set([...URIs.data]);
         }
-
+        
         return uris;
       });
     }); 
