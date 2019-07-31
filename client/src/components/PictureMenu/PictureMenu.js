@@ -14,17 +14,13 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function PictureMenu(props) {
-  const [anchorEl, setAnchorEl] = useState(props.anchorElement);
   const [downloadMenuOpen, setDownloadMenuOpen] = useState(false);
   const classes = useStyles();
 
   function handleClose() {
     props.setAnchorEl(null);
+    props.setPictureMenuOpen(false);
   }
-
-  useEffect(() => {
-    setAnchorEl(props.anchorElement);
-  }, [props.anchorElement]);
 
   function handleSelectClick() {
     props.setSelectedImgs((selectedImgs) => {
@@ -43,8 +39,8 @@ export default function PictureMenu(props) {
   return (
     <React.Fragment>
       <Menu
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
+        anchorEl={props.anchorEl}
+        open={props.pictureMenuOpen}
         onClose={handleClose}
         keepMounted
       >
@@ -58,9 +54,10 @@ export default function PictureMenu(props) {
         </MenuItem>
       </Menu>
       <DownloadMenu 
-        anchorEl={anchorEl} 
+        anchorEl={props.anchorEl} 
         downloadMenuOpen={downloadMenuOpen} 
         setDownloadMenuOpen={setDownloadMenuOpen}
+        setPictureMenuOpen={props.setPictureMenuOpen}
         clickedImg={props.clickedImg}  
       />
     </React.Fragment>
