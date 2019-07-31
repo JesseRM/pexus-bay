@@ -5,9 +5,17 @@ import getImageBlob from '../../Util/getImageBlob';
 import createAnchorElFromBlob from '../../Util/createAnchorElFromBlob';
 
 export default function DownloadMenu(props) {
-  
+  function handleItemClick(event) {
+    const imageQuality = event.currentTarget.textContent.toLowerCase();
+
+    downloadImage(props.clickedImg[imageQuality]);
+
+    handleClose();
+  }
+
   function handleClose() {
     props.setDownloadMenuOpen(false);
+    props.setPictureMenuOpen(false);
   }
 
   function downloadImage(imageURI) {
@@ -18,6 +26,8 @@ export default function DownloadMenu(props) {
 
       document.body.appendChild(anchorImageEl);
       anchorImageEl.click();
+
+      URL.revokeObjectURL(anchorImageEl.href);
       document.body.removeChild(anchorImageEl);
     });
   }
@@ -28,9 +38,9 @@ export default function DownloadMenu(props) {
     open={props.downloadMenuOpen}
     onClose={handleClose}
     >
-      <MenuItem onClick={() => downloadImage(props.clickedImg.low)}>Low</MenuItem>
-      <MenuItem onClick={() => downloadImage(props.clickedImg.medium)}>Medium</MenuItem>
-      <MenuItem onClick={() => downloadImage(props.clickedImg.high)}>High</MenuItem>
+      <MenuItem onClick={handleItemClick}>Low</MenuItem>
+      <MenuItem onClick={handleItemClick}>Medium</MenuItem>
+      <MenuItem onClick={handleItemClick}>High</MenuItem>
     </Menu>
   )
 }
