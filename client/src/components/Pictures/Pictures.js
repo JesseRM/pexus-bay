@@ -27,10 +27,12 @@ export default function Pictures(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [clickedImg, setClickedImg] = useState(null);
+  const [pictureMenuOpen, setPictureMenuOpen] = useState(false);
   let picCards;
 
   function handleClick(event) {
     setAnchorEl(event.currentTarget);
+    setPictureMenuOpen(true);
     setClickedImg([...props.imgURIs][event.currentTarget.attributes['data-index'].value])
   }
   
@@ -57,9 +59,11 @@ export default function Pictures(props) {
     <div className={classes.root}>
       {picCards}
       <PictureMenu 
-        anchorElement={anchorEl} 
+        anchorEl={anchorEl} 
         setAnchorEl={setAnchorEl} 
-        setSelectedImgs={props.setSelectedImgs} 
+        setSelectedImgs={props.setSelectedImgs}
+        pictureMenuOpen={pictureMenuOpen}
+        setPictureMenuOpen={setPictureMenuOpen} 
         imgURIs={props.imgURIs}
         clickedImg={clickedImg}
       />
