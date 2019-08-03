@@ -6,7 +6,7 @@ import PictureMenu from '../PictureMenu/PictureMenu';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -28,36 +28,36 @@ export default function Pictures(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [clickedImg, setClickedImg] = useState(null);
   const [pictureMenuOpen, setPictureMenuOpen] = useState(false);
-  let picCards;
+  let pictureCards;
 
-  function handleClick(event) {
+  function handleMoreIconClick(event) {
     setAnchorEl(event.currentTarget);
     setPictureMenuOpen(true);
     setClickedImg([...props.imgURIs][event.currentTarget.attributes['data-index'].value])
   }
   
   if (props.imgURIs.size) {
-    picCards = picCards || [];
-    let index = 0;
+    pictureCards = pictureCards || [];
+    let key = 0;
     
     props.imgURIs.forEach((img) => {
-      picCards.push((
-        <Card className={classes.card} key={index}>
+      pictureCards.push((
+        <Card className={classes.card} key={key}>
           <CardMedia className={classes.media} image={img.thumb} >
-            <IconButton onClick={handleClick} data-index={index}>
+            <IconButton onClick={handleMoreIconClick} data-index={key}>
               <MoreVertIcon />
             </IconButton>
           </CardMedia>
         </Card>
       ));
 
-      index++;
+      key++;
     });
   }
  
   return (
     <div className={classes.root}>
-      {picCards}
+      {pictureCards}
       <PictureMenu 
         anchorEl={anchorEl} 
         setAnchorEl={setAnchorEl} 
