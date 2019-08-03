@@ -12,9 +12,9 @@ const userStyles = makeStyles((theme) => ({
   title: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-},
+      display: 'block'
+    }
+  },
 }));
 
 
@@ -27,9 +27,22 @@ function NavBar(props) {
         <IconButton onClick={() => props.setDrawerState(true)}>
           <MenuIcon />
         </IconButton>
-        <Typography className={classes.title} variant="h6" noWrap>Pexus Bay</Typography>
-        <SearchBar setTerm={props.setTerm} getImgURIs={props.getImgURIs} setGetMoreBtn={props.setGetMoreBtn} />
-        <SourceMenu setSource={props.setSource} setGetMoreBtn={props.setGetMoreBtn} />
+        <Typography 
+          className={classes.title} 
+          variant="h6" 
+          noWrap
+        >
+          Pexus Bay
+        </Typography>
+        <SearchBar 
+          setTerm={props.setTerm} 
+          getImgURIs={props.getImgURIs} 
+          setGetMoreBtn={props.setGetMoreBtn} 
+        />
+        <SourceMenu 
+          setSource={props.setSource} 
+          setGetMoreBtn={props.setGetMoreBtn} 
+        />
       </Toolbar>
     </AppBar>
   )
