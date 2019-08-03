@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
@@ -17,7 +17,7 @@ export default function PictureMenu(props) {
   const [downloadMenuOpen, setDownloadMenuOpen] = useState(false);
   const classes = useStyles();
 
-  function handleClose() {
+  function handleMenuClose() {
     props.setAnchorEl(null);
     props.setPictureMenuOpen(false);
   }
@@ -29,7 +29,7 @@ export default function PictureMenu(props) {
       return selectedImgs;
     });
 
-    handleClose();
+    handleMenuClose();
   }
 
   function handleDownloadClick() {
@@ -41,7 +41,7 @@ export default function PictureMenu(props) {
       <Menu
         anchorEl={props.anchorEl}
         open={props.pictureMenuOpen}
-        onClose={handleClose}
+        onClose={handleMenuClose}
         keepMounted
       >
         <MenuItem onClick={handleDownloadClick}>
