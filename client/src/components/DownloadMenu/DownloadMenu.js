@@ -34,9 +34,9 @@ export default function DownloadMenu(props) {
   
   return (
     <Menu 
-    anchorEl={props.anchorEl}  
-    open={props.downloadMenuOpen}
-    onClose={handleMenuClose}
+      anchorEl={props.anchorEl}  
+      open={props.downloadMenuOpen}
+      onClose={handleMenuClose}
     >
       <MenuItem onClick={handleItemClick}>Low</MenuItem>
       <MenuItem onClick={handleItemClick}>Medium</MenuItem>
