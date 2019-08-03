@@ -10,10 +10,10 @@ export default function DownloadMenu(props) {
 
     downloadImage(props.clickedImg[imageQuality]);
 
-    handleClose();
+    handleMenuClose();
   }
 
-  function handleClose() {
+  function handleMenuClose() {
     props.setDownloadMenuOpen(false);
     props.setPictureMenuOpen(false);
   }
@@ -36,7 +36,7 @@ export default function DownloadMenu(props) {
     <Menu 
     anchorEl={props.anchorEl}  
     open={props.downloadMenuOpen}
-    onClose={handleClose}
+    onClose={handleMenuClose}
     >
       <MenuItem onClick={handleItemClick}>Low</MenuItem>
       <MenuItem onClick={handleItemClick}>Medium</MenuItem>
