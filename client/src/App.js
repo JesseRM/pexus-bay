@@ -12,6 +12,7 @@ function App() {
   const [page, setPage] = useAsyncState(1);
   const [source, setSource] = useState('pixabay');
   const [term, setTerm] = useState('');
+  const [navBarType, setNavBarType] = useState(null);
 
   return (
     <BrowserRouter>
@@ -28,13 +29,25 @@ function App() {
           setSource={setSource}
           term={term}
           setTerm={setTerm}
-        />} 
+          navBarType={navBarType}
+          setNavBarType={setNavBarType}
+          />
+        } 
       />
       <Route 
         path='/selected' 
-        render={() => <Selected imgURIs={selectedImgs} setDrawerState={setDrawerState} />} 
+        render={() => <Selected 
+          imgURIs={selectedImgs} 
+          setDrawerState={setDrawerState} 
+          navBarType={navBarType}
+          setNavBarType={setNavBarType}
+          />
+        } 
       />
-      <TopMenu drawerState={drawerState} setDrawerState={setDrawerState} />
+      <TopMenu 
+        drawerState={drawerState} 
+        setDrawerState={setDrawerState} 
+      />
     </BrowserRouter>  
   )
 }

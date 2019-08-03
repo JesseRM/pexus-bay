@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Pictures from '../../components/Pictures/Pictures';
-import GenNavBAr from '../../components/GenNavBar/GenNavBar';
+import NavBar from '../../components/NavBar/NavBar';
 
 export default function Selected(props) {
+  useEffect(() => {
+    props.setNavBarType('selected');
+  });
 
   return (
     <div>
-      <GenNavBAr setDrawerState={props.setDrawerState} />
+      <NavBar 
+        setDrawerState={props.setDrawerState} 
+        navBarType={props.navBarType}
+      />
       <Pictures imgURIs={props.imgURIs} />
     </div>
   )

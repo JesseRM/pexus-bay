@@ -14,7 +14,7 @@ const userStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block'
     }
-  },
+  }
 }));
 
 
@@ -34,15 +34,19 @@ function NavBar(props) {
         >
           Pexus Bay
         </Typography>
-        <SearchBar 
-          setTerm={props.setTerm} 
-          getImgURIs={props.getImgURIs} 
-          setGetMoreBtn={props.setGetMoreBtn} 
-        />
-        <SourceMenu 
-          setSource={props.setSource} 
-          setGetMoreBtn={props.setGetMoreBtn} 
-        />
+        {props.navBarType === 'home' &&
+          <SearchBar 
+            setTerm={props.setTerm} 
+            getImgURIs={props.getImgURIs} 
+            setGetMoreBtn={props.setGetMoreBtn} 
+          />
+        }
+        {props.navBarType === 'home' &&
+          <SourceMenu 
+            setSource={props.setSource} 
+            setGetMoreBtn={props.setGetMoreBtn} 
+          />
+        }
       </Toolbar>
     </AppBar>
   )
