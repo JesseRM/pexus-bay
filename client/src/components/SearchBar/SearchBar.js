@@ -29,10 +29,11 @@ const userStyles = makeStyles((theme) => ({
 }));
 
 export default function SearchBar(props) {
+  const ENTER_KEY = 13;
   const classes = userStyles();
 
-  function handleEnter(event) {
-    if (event.keyCode === 13) {
+  function handleKeyPress(event) {
+    if (event.keyCode === ENTER_KEY) {
       props.getImgURIs(1);
       props.setGetMoreBtn(true);
       window.scrollTo(0, 0);
@@ -47,7 +48,7 @@ export default function SearchBar(props) {
             input: classes.inputInput,
           }}
           onChange={(event) => props.setTerm(event.target.value)}
-          onKeyDown={(event) => handleEnter(event)}
+          onKeyDown={handleKeyPress}
       />
     </div>
   )
