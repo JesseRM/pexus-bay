@@ -7,7 +7,7 @@ import PexelsIcon from '../Icons/PexelsIcon/PexelsIcon';
 import UnsplashIcon from '../Icons/UnsplashIcon/UnsplashIcon';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   menuItem: {
     backgroundColor: 'rgba(101, 164, 157, 0.4)'
   }
@@ -22,7 +22,7 @@ export default function SourceMenu(props) {
     setAnchorEl(null);
   }
   
-  function handleClick(event) {
+  function handleSourceBtnClick(event) {
     setAnchorEl(event.currentTarget);
   }
 
@@ -43,12 +43,11 @@ export default function SourceMenu(props) {
 
   return (
     <React.Fragment>
-      <Button onClick={handleClick}>
+      <Button onClick={handleSourceBtnClick}>
         Source
       </Button>
       
       <Menu
-        id="simple-menu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
