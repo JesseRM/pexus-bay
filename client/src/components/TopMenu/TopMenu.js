@@ -15,7 +15,7 @@ export default function TopMenu(props) {
 
   return (
     <Drawer 
-      open={props.drawerState} 
+      open={props.topMenuOpen} 
       onClose={handleTopMenuClose}
     >
       <List onClick={() => props.setTopMenuOpen(false)}>
