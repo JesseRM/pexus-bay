@@ -15,15 +15,15 @@ export default function Home(props) {
   function getImgURIs(page) {
     axios.get(`/api/images/${props.source}/${props.term}/${page}`).then((URIs) => {
       props.setImgURIs((prevURIs) => {
-        let uris;
+        let newURIs;
         
         if (page !== 1) {
-          uris = new Set([...prevURIs, ...URIs.data]);
+          newURIs = new Set([...prevURIs, ...URIs.data]);
         } else {
-          uris = new Set([...URIs.data]);
+          newURIs = new Set([...URIs.data]);
         }
         
-        return uris;
+        return newURIs;
       });
     }); 
   }
