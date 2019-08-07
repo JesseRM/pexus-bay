@@ -6,7 +6,7 @@ import TopMenu from './components/TopMenu/TopMenu';
 import useAsyncState from './Util/asyncState';
 
 function App() {
-  const [drawerState, setDrawerState] = useState(false);
+  const [topMenuOpen, setTopMenuOpen] = useState(false);
   const [imgURIs, setImgURIs] = useState(new Set());
   const [selectedImgs, setSelectedImgs] = useState(new Set());
   const [page, setPage] = useAsyncState(1);
@@ -21,7 +21,7 @@ function App() {
         render={() => <Home 
           imgURIs={imgURIs} 
           setImgURIs={setImgURIs} 
-          setDrawerState={setDrawerState} 
+          setTopMenuOpen={setTopMenuOpen} 
           setSelectedImgs={setSelectedImgs}
           setPage={setPage}
           page={page} 
@@ -38,15 +38,15 @@ function App() {
         path='/selected' 
         render={() => <Selected 
           imgURIs={selectedImgs} 
-          setDrawerState={setDrawerState} 
+          setTopMenuOpen={setTopMenuOpen} 
           navBarType={navBarType}
           setNavBarType={setNavBarType}
           />
         } 
       />
       <TopMenu 
-        drawerState={drawerState} 
-        setDrawerState={setDrawerState} 
+        topMenuOpen={topMenuOpen} 
+        setTopMenuOpen={setTopMenuOpen} 
       />
     </BrowserRouter>  
   )

@@ -24,7 +24,7 @@ function NavBar(props) {
   return (
     <AppBar position="fixed">
       <Toolbar>
-        <IconButton onClick={() => props.setDrawerState(true)}>
+        <IconButton onClick={() => props.setTopMenuOpen(true)}>
           <MenuIcon />
         </IconButton>
         <Typography 

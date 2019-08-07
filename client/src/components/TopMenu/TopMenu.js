@@ -10,7 +10,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 
 export default function TopMenu(props) {
   function handleTopMenuClose() {
-    props.setDrawerState(false);
+    props.setTopMenuOpen(false);
   }
 
   return (
@@ -18,7 +18,7 @@ export default function TopMenu(props) {
       open={props.drawerState} 
       onClose={handleTopMenuClose}
     >
-      <List onClick={() => props.setDrawerState(false)}>
+      <List onClick={() => props.setTopMenuOpen(false)}>
         <ListItem 
           button 
           component={Link} 

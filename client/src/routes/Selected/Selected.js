@@ -10,7 +10,7 @@ export default function Selected(props) {
   return (
     <div>
       <NavBar 
-        setDrawerState={props.setDrawerState} 
+        setTopMenuOpen={props.setTopMenuOpen} 
         navBarType={props.navBarType}
       />
       <Pictures imgURIs={props.imgURIs} />

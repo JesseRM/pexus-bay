@@ -35,7 +35,7 @@ export default function Home(props) {
         getImgURIs={getImgURIs} 
         setSource={props.setSource} 
         setGetMoreBtn={setGetMoreBtn} 
-        setDrawerState={props.setDrawerState}
+        setTopMenuOpen={props.setTopMenuOpen}
         navBarType={props.navBarType}
       />
       <Pictures 
