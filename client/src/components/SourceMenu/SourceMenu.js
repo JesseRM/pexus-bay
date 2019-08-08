@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
   menuItem: {
-    backgroundColor: 'rgba(101, 164, 157, 0.4)'
+    border: 'thick double #32a1ce'
   }
 }));
 
@@ -53,15 +53,24 @@ export default function SourceMenu(props) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleItemClick}>
+        <MenuItem 
+          onClick={handleItemClick} 
+          className={props.source === 'pixabay' ? classes.menuItem : null}
+        > 
           <PixabayIcon />
           Pixabay
         </MenuItem>
-        <MenuItem onClick={handleItemClick}>
+        <MenuItem 
+          onClick={handleItemClick}
+          className={props.source === 'pexels' ? classes.menuItem : null}
+        >
           <PexelsIcon />
           Pexels
         </MenuItem>
-        <MenuItem onClick={handleItemClick}>
+        <MenuItem 
+          onClick={handleItemClick}
+          className={props.source === 'unsplash' ? classes.menuItem : null}
+        >
           <UnsplashIcon />
           Unsplash
         </MenuItem>

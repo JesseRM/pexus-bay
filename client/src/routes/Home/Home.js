@@ -33,6 +33,7 @@ export default function Home(props) {
       <NavBar 
         setTerm={props.setTerm} 
         getImgURIs={getImgURIs} 
+        source={props.source}
         setSource={props.setSource} 
         setGetMoreBtn={setGetMoreBtn} 
         setTopMenuOpen={props.setTopMenuOpen}

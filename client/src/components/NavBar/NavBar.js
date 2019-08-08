@@ -9,11 +9,14 @@ import SourceMenu from '../SourceMenu/SourceMenu';
 import SearchBar from '../SearchBar/SearchBar';
 
 const userStyles = makeStyles((theme) => ({
-  title: {
+  titleHome: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block'
     }
+  },
+  title: {
+    display: 'block'
   }
 }));
 
@@ -28,7 +31,7 @@ function NavBar(props) {
           <MenuIcon />
         </IconButton>
         <Typography 
-          className={classes.title} 
+          className={props.navBarType === 'home' ? classes.titleHome : classes.title} 
           variant="h6" 
           noWrap
         >
@@ -43,6 +46,7 @@ function NavBar(props) {
         }
         {props.navBarType === 'home' &&
           <SourceMenu 
+            source={props.source}
             setSource={props.setSource} 
             setGetMoreBtn={props.setGetMoreBtn} 
           />
