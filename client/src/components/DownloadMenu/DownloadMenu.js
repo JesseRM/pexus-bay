@@ -2,6 +2,7 @@ import React from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import getImageBlob from '../../Util/getImageBlob';
+import filenameFromURI from '../../Util/filenameFromURI';
 import createAnchorElFromBlob from '../../Util/createAnchorElFromBlob';
 
 export default function DownloadMenu(props) {
@@ -20,9 +21,10 @@ export default function DownloadMenu(props) {
 
   function downloadImage(imageURI) {
     let anchorImageEl;
+    const filename = filenameFromURI(imageURI);
 
     getImageBlob(imageURI).then((imageBlob) => {
-      anchorImageEl = createAnchorElFromBlob(imageBlob, 'image.jpg');
+      anchorImageEl = createAnchorElFromBlob(imageBlob, filename);
 
       document.body.appendChild(anchorImageEl);
       anchorImageEl.click();
