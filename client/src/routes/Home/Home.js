@@ -3,6 +3,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import axios from 'axios';
 import Pictures from '../../components/Pictures/Pictures';
 import GetMoreButton from '../../components/GetMoreButton/GetMoreButton';
+import UserInstructions from '../../components/userInstructions/UserInstructions';
 
 
 export default function Home(props) {
@@ -39,6 +40,9 @@ export default function Home(props) {
         setTopMenuOpen={props.setTopMenuOpen}
         navBarType={props.navBarType}
       />
+      {props.imgURIs.size === 0 &&
+        <UserInstructions />
+      }
       <Pictures 
         imgURIs={props.imgURIs}
         setSelectedImgs={props.setSelectedImgs}
