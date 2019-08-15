@@ -6,20 +6,29 @@ import PictureMenu from '../PictureMenu/PictureMenu';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
-    marginTop: '64px'
+    marginTop: '64px',
+    justifyContent: 'center'
   },
   card: {
-    maxWidth: 200,
-    margin: '6px'
+    maxWidth: 100,
+    margin: '6px',
+    [theme.breakpoints.up('sm')]: {
+      maxWidth: 200,
+      margin: '6px'
+    }
   },
   media: {
-    height: 200,
-    width: 200,
+    height: 100,
+    width: 100,
+    [theme.breakpoints.up('sm')]: {
+      height: 200,
+      width: 200
+    }
   }
 }));
 
