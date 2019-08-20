@@ -1,7 +1,17 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(() => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center'
+  }
+}));
 
 export default function GetMoreButton(props) {
+  const classes = useStyles();
+  
   if (!props.getMoreBtn) {
     return null;
   }
@@ -11,8 +21,12 @@ export default function GetMoreButton(props) {
   }
 
   return (
-    <div>
-      <Button variant="contained" color="primary" onClick={handleClick}>
+    <div className={classes.root}>
+      <Button 
+        variant="contained" 
+        color="primary" 
+        onClick={handleClick}
+      >
         Get More
       </Button>
     </div>
