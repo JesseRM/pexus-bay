@@ -5,7 +5,7 @@ import getImageBlob from '../../Util/getImageBlob';
 import filenameFromURI from '../../Util/filenameFromURI';
 import createAnchorElFromBlob from '../../Util/createAnchorElFromBlob';
 
-export default function DownloadMenu(props) {
+function DownloadMenu(props) {
   function handleItemClick(event) {
     const imageQuality = event.currentTarget.textContent.toLowerCase();
 
@@ -46,3 +46,5 @@ export default function DownloadMenu(props) {
     </Menu>
   )
 }
+
+export default DownloadMenu;

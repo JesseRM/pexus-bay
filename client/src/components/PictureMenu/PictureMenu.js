@@ -12,8 +12,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
-export default function PictureMenu(props) {
+function PictureMenu(props) {
   const [downloadMenuOpen, setDownloadMenuOpen] = useState(false);
   const classes = useStyles();
 
@@ -63,3 +62,5 @@ export default function PictureMenu(props) {
     </React.Fragment>
   )
 }
+
+export default PictureMenu;

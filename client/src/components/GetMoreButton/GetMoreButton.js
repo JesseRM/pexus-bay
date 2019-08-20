@@ -9,7 +9,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function GetMoreButton(props) {
+function GetMoreButton(props) {
   const classes = useStyles();
   
   if (!props.getMoreBtn) {
@@ -32,3 +32,5 @@ export default function GetMoreButton(props) {
     </div>
   )
 }
+
+export default GetMoreButton;

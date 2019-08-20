@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function PexelsIcon() {
+function PexelsIcon() {
   return (
     <svg height="30" width="30">
       <g transform="scale(0.8)">
@@ -10,3 +10,5 @@ export default function PexelsIcon() {
   </svg>
   )
 }
+
+export default PexelsIcon;

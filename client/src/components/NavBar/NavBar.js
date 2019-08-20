@@ -20,7 +20,6 @@ const userStyles = makeStyles((theme) => ({
   }
 }));
 
-
 function NavBar(props) {
   const classes = userStyles();
   

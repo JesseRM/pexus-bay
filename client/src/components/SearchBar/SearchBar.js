@@ -28,7 +28,7 @@ const userStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SearchBar(props) {
+function SearchBar(props) {
   const ENTER_KEY = 13;
   const classes = userStyles();
 
@@ -53,3 +53,5 @@ export default function SearchBar(props) {
     </div>
   )
 }
+
+export default SearchBar;

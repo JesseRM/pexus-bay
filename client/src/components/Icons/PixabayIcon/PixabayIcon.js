@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function PixabayIcon() {
+function PixabayIcon() {
   return (
     <svg width="30" height="30">
       <g transform="translate(0, 30) scale(0.01, -0.01)" fill="#000000">
@@ -22,3 +22,5 @@ export default function PixabayIcon() {
     </svg>
   )
 }
+
+export default PixabayIcon;

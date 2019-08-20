@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Pictures(props) {
+function Pictures(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [clickedImg, setClickedImg] = useState(null);
@@ -79,3 +79,5 @@ export default function Pictures(props) {
     </div>
   )
 }
+
+export default Pictures;

@@ -1,4 +1,4 @@
-export default function createAnchorElFromBlob(imageBlob, imageName) {
+function createAnchorElFromBlob(imageBlob, imageName) {
   const anchorEl = document.createElement('a');
 
   anchorEl.href = URL.createObjectURL(imageBlob);
@@ -6,3 +6,5 @@ export default function createAnchorElFromBlob(imageBlob, imageName) {
 
   return anchorEl;
 }
+
+export default createAnchorElFromBlob;

@@ -8,7 +8,7 @@ import DoneIcon from '@material-ui/icons/Done';
 import HomeIcon from '@material-ui/icons/Home';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 
-export default function TopMenu(props) {
+function TopMenu(props) {
   function handleTopMenuClose() {
     props.setTopMenuOpen(false);
   }
@@ -43,3 +43,5 @@ export default function TopMenu(props) {
     </Drawer>
   )
 }
+
+export default TopMenu;

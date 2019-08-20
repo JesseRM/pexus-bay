@@ -6,7 +6,7 @@ import GetMoreButton from '../../components/GetMoreButton/GetMoreButton';
 import UserInstructions from '../../components/userInstructions/UserInstructions';
 
 
-export default function Home(props) {
+function Home(props) {
   const [getMoreBtn, setGetMoreBtn] = useState(props.imgURIs.size ? true : false);
 
   useEffect(() => {
@@ -56,3 +56,5 @@ export default function Home(props) {
     </React.Fragment>
   )
 }
+
+export default Home;
