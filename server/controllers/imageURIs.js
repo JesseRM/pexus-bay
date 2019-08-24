@@ -23,6 +23,9 @@ function getPixabayURIs(req, res) {
 
       res.send(imgURIs);
     })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 function getPexelsURIs(req, res) {
@@ -63,23 +66,27 @@ function getUnsplashURIs(req, res) {
   const page = req.params.page;
   const apiURI = `https://unsplash.com/napi/search/photos?query=${searchTerm}&xp=&per_page=30&page=${page}`;
 
-  axios.get(apiURI).then((response) => {
-    const imgURIs = [];
-    const hits = response.data.results;
+  axios.get(apiURI)
+    .then((response) => {
+      const imgURIs = [];
+      const hits = response.data.results;
 
-    hits.forEach((hit) => {
-      const imgSource = {
-        thumb: hit.urls.small,
-        low: hit.urls.small,
-        medium: hit.urls.regular,
-        high: hit.urls.full
-      }
+      hits.forEach((hit) => {
+        const imgSource = {
+          thumb: hit.urls.small,
+          low: hit.urls.small,
+          medium: hit.urls.regular,
+          high: hit.urls.full
+        }
 
-      imgURIs.push(imgSource);
-    });
-    
-    res.send(imgURIs);
-  });
+        imgURIs.push(imgSource);
+      });
+      
+      res.send(imgURIs);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
 }
 
 module.exports = {
