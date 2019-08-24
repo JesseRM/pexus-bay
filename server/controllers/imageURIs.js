@@ -3,7 +3,7 @@ const axios = require('axios');
 function getPixabayURIs(req, res) {
   const searchTerm = req.params.term;
   const page = req.params.page;
-  const apiURI = `https://pixabay.com/api/?key=${process.env.PIXABAY_API}&q=${searchTerm}&page=${page}`;
+  const apiURI = `https://pixabay.com/api/?key=${process.env.PIXABAY_API}&q=${searchTerm}&page=${page}&per_page=30`;
 
   axios.get(apiURI)
     .then((response) => {
@@ -31,7 +31,7 @@ function getPixabayURIs(req, res) {
 function getPexelsURIs(req, res) {
   const searchTerm = req.params.term;
   const page = req.params.page;
-  const apiURI = `https://api.pexels.com/v1/search?query=${searchTerm}&page=${page}`
+  const apiURI = `https://api.pexels.com/v1/search?query=${searchTerm}&page=${page}&per_page=30`;
   const config = {
     headers: {
       Authorization: process.env.PEXELS_API
