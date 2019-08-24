@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const imagesController = require('../../controllers/imageSources');
-const getImageBuffer = require('../../controllers/imageDownload');
+const imageBufferController = require('../../controllers/imageDownload');
+const imageURIController = require('../../controllers/imageURIs');
 
-router.get('/pixabay/:term/:page', imagesController.getPixabay);
-router.get('/pexels/:term/:page', imagesController.getPexels);
-router.get('/unsplash/:term/:page', imagesController.getUnsplash);
-router.get('/download/*', getImageBuffer);
+router.get('/pixabay/:term/:page', imageURIController.getPixabayURIs);
+router.get('/pexels/:term/:page', imageURIController.getPexelsURIs);
+router.get('/unsplash/:term/:page', imageURIController.getUnsplashURIs);
+router.get('/download/*', imageBufferController);
 
 module.exports = router;
