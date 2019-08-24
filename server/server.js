@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
+require('dotenv').config();
+
 app.use('/api/images', require('./routes/api/images'));
 
 app.use(express.static('../client/build'));
