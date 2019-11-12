@@ -4,8 +4,8 @@ const path = require('path');
 
 require('dotenv').config();
 
+app.use(express.json());
 app.use('/api/images', require('./routes/api/images'));
-
 app.use(express.static('../client/build'));
 
 app.get('/*', (req, res) => {
