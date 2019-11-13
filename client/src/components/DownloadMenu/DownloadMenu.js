@@ -4,6 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import getImageBlob from '../../Util/getImageBlob';
 import filenameFromURI from '../../Util/filenameFromURI';
 import createAnchorElFromBlob from '../../Util/createAnchorElFromBlob';
+import startFileDownload from '../../Util/startFileDownload';
 
 function DownloadMenu(props) {
   function handleItemClick(event) {
@@ -24,13 +25,9 @@ function DownloadMenu(props) {
     const filename = filenameFromURI(imageURI);
 
     getImageBlob(imageURI).then((imageBlob) => {
-      anchorImageEl = createAnchorElFromBlob(imageBlob, filename);
+      anchorImageEl = createAnchorElFromBlob(imageBlob, {filename: filename, extension: '.jpg'});
 
-      document.body.appendChild(anchorImageEl);
-      anchorImageEl.click();
-
-      URL.revokeObjectURL(anchorImageEl.href);
-      document.body.removeChild(anchorImageEl);
+      startFileDownload(anchorImageEl);
     });
   }
   
