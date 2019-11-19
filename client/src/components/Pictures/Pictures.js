@@ -75,6 +75,7 @@ function Pictures(props) {
         setPictureMenuOpen={setPictureMenuOpen} 
         imgURIs={props.imgURIs}
         clickedImg={clickedImg}
+        setDisplayZipBtn={props.setDisplayZipBtn}
       />
     </div>
   )
