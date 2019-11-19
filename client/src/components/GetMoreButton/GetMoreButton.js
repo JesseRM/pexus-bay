@@ -24,7 +24,7 @@ function GetMoreButton(props) {
     <div className={classes.root}>
       <Button 
         variant="contained" 
-        color="primary" 
+        color="secondary" 
         onClick={handleClick}
       >
         Get More
