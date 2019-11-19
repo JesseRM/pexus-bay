@@ -4,6 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import DownloadIcon from '@material-ui/icons/Archive';
+import RemoveIcon from '@material-ui/icons/Clear';
 import DownloadMenu from '../DownloadMenu/DownloadMenu.js';
 
 const useStyles = makeStyles((theme) => ({
@@ -35,6 +36,17 @@ function PictureMenu(props) {
     setDownloadMenuOpen(true);
   }
 
+  function handleRemoveClick() {
+    props.setSelectedImgs((selectedImgs) => {
+      selectedImgs.delete(props.clickedImg);
+      props.setDisplayZipBtn(selectedImgs.size);
+      
+      return selectedImgs;
+    });
+
+    handleMenuClose();
+  }
+
   return (
     <React.Fragment>
       <Menu
@@ -43,14 +55,24 @@ function PictureMenu(props) {
         onClose={handleMenuClose}
         keepMounted
       >
-        <MenuItem onClick={handleDownloadClick}>
-          <DownloadIcon className={classes.icon} />
-          Download
-        </MenuItem>
-        <MenuItem onClick={handleSelectClick}>
-          <AddCircleIcon className={classes.icon} />
-          Add to Selected
-        </MenuItem>
+        {window.location.pathname !== '/selected' &&
+          <MenuItem onClick={handleDownloadClick}>
+            <DownloadIcon className={classes.icon} />
+            Download
+          </MenuItem>
+        }     
+        {window.location.pathname !== '/selected' &&
+          <MenuItem onClick={handleSelectClick}>
+            <AddCircleIcon className={classes.icon} />
+            Add to Selected
+          </MenuItem>
+        } 
+        {window.location.pathname === '/selected' &&
+          <MenuItem onClick={handleRemoveClick}>
+            <RemoveIcon className={classes.icon} />
+            Remove
+          </MenuItem>
+        } 
       </Menu>
       <DownloadMenu 
         anchorEl={props.anchorEl} 
