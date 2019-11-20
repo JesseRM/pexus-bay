@@ -46,6 +46,7 @@ function Home(props) {
       <Pictures 
         imgURIs={props.imgURIs}
         setSelectedImgs={props.setSelectedImgs}
+        setDisplayProgress={props.setDisplayProgress}
       />
       <GetMoreButton 
         getMoreBtn={getMoreBtn} 

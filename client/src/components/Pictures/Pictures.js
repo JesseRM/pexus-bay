@@ -76,6 +76,7 @@ function Pictures(props) {
         imgURIs={props.imgURIs}
         clickedImg={clickedImg}
         setDisplayZipBtn={props.setDisplayZipBtn}
+        setDisplayProgress={props.setDisplayProgress}
       />
     </div>
   )

@@ -79,7 +79,8 @@ function PictureMenu(props) {
         downloadMenuOpen={downloadMenuOpen} 
         setDownloadMenuOpen={setDownloadMenuOpen}
         setPictureMenuOpen={props.setPictureMenuOpen}
-        clickedImg={props.clickedImg}  
+        clickedImg={props.clickedImg}
+        setDisplayProgress={props.setDisplayProgress}  
       />
     </React.Fragment>
   )

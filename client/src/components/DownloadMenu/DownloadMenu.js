@@ -10,6 +10,8 @@ function DownloadMenu(props) {
   function handleItemClick(event) {
     const imageQuality = event.currentTarget.textContent.toLowerCase();
 
+    props.setDisplayProgress(true);
+
     downloadImage(props.clickedImg[imageQuality]);
 
     handleMenuClose();
@@ -28,6 +30,8 @@ function DownloadMenu(props) {
       anchorImageEl = createAnchorElFromBlob(imageBlob, {filename: filename, extension: '.jpg'});
 
       startFileDownload(anchorImageEl);
+
+      props.setDisplayProgress(false);
     });
   }
   
