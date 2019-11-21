@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
   menuItem: {
-    border: 'thick double #32a1ce'
+    backgroundColor: '#E2AA4D'
   }
 }));
 
