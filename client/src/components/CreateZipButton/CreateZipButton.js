@@ -6,7 +6,8 @@ const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '80px'
+    marginTop: '4.2rem',
+    marginBottom: 0
   }
 }));
 
@@ -19,6 +20,8 @@ function CreateZipButton(props) {
   }
 
   function handleClick() {
+    props.setDisplayProgress(true);
+    
     fetch('/api/images/download/zip', {
       method: 'POST',
       headers: {
@@ -36,6 +39,8 @@ function CreateZipButton(props) {
 
         URL.revokeObjectURL(anchorEl.href);
         document.body.removeChild(anchorEl);
+
+        props.setDisplayProgress(false);
       });
     });
   }
