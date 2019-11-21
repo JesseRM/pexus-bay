@@ -53,7 +53,7 @@ function Pictures(props) {
       pictureCards.push((
         <Card className={classes.card} key={key}>
           <CardMedia className={classes.media} image={img.thumb} >
-            <IconButton onClick={handleMoreIconClick} data-index={key}>
+            <IconButton color='secondary' onClick={handleMoreIconClick} data-index={key}>
               <MoreVertIcon />
             </IconButton>
           </CardMedia>
