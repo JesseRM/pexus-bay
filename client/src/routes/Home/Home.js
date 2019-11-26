@@ -1,45 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import NavBar from '../../components/NavBar/NavBar';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import Pictures from '../../components/Pictures/Pictures';
 import GetMoreButton from '../../components/GetMoreButton/GetMoreButton';
 import UserInstructions from '../../components/userInstructions/UserInstructions';
-
+import getImgURIs from '../../Util/getImgURIs';
 
 function Home(props) {
-  const [getMoreBtn, setGetMoreBtn] = useState(props.imgURIs.size ? true : false);
-
   useEffect(() => {
     props.setNavBarType('home');
   });
-
-  function getImgURIs(page) {
-    axios.get(`/api/images/${props.source}/${props.term}/${page}`).then((URIs) => {
-      props.setImgURIs((prevURIs) => {
-        let newURIs;
-        
-        if (page !== 1) {
-          newURIs = new Set([...prevURIs, ...URIs.data]);
-        } else {
-          newURIs = new Set([...URIs.data]);
-        }
-        
-        return newURIs;
-      });
-    }); 
-  }
   
   return (
     <React.Fragment>
-      <NavBar 
-        setTerm={props.setTerm} 
-        getImgURIs={getImgURIs} 
-        source={props.source}
-        setSource={props.setSource} 
-        setGetMoreBtn={setGetMoreBtn} 
-        setTopMenuOpen={props.setTopMenuOpen}
-        navBarType={props.navBarType}
-      />
       {props.imgURIs.size === 0 &&
         <UserInstructions />
       }
@@ -49,10 +20,14 @@ function Home(props) {
         setDisplayProgress={props.setDisplayProgress}
       />
       <GetMoreButton 
-        getMoreBtn={getMoreBtn} 
+        page={props.page}
+        term={props.term}
+        source={props.source}
+        imgURIs={props.imgURIs} 
         getImgURIs={getImgURIs} 
         setPage={props.setPage} 
-        page={props.page} 
+        setImgURIs={props.setImgURIs}
+        displayGetMoreBtn={props.displayGetMoreBtn}
       />
     </React.Fragment>
   )
