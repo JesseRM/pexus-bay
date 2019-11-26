@@ -1,6 +1,7 @@
 import React from 'react';
 import InputBase from '@material-ui/core/InputBase';
 import { makeStyles, fade } from '@material-ui/core/styles';
+import getImgURIs from '../../Util/getImgURIs';
 
 const userStyles = makeStyles((theme) => ({
   search: {
@@ -34,16 +35,18 @@ function SearchBar(props) {
 
   function handleKeyPress(event) {
     if (event.keyCode === ENTER_KEY) {
-      props.getImgURIs(1);
-      props.setGetMoreBtn(true);
-      window.scrollTo(0, 0);
+      if (props.term !== '') {
+        getImgURIs({term: props.term, page: 1, source: props.source}, props.setImgURIs);
+        window.scrollTo(0, 0);
+        props.setDisplayGetMoreBtn(true);
+      }
     }
   }
   
   return (
     <div className={classes.search}>
       <InputBase
-          placeholder="Search…"
+          placeholder={`${props.term ? props.term : 'Search images...'}`}
           classes={{
             input: classes.inputInput,
           }}
