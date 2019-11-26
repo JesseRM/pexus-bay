@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './routes/Home/Home';
 import Selected from './routes/Selected/Selected';
 import TopMenu from './components/TopMenu/TopMenu';
-import Progress from './components/Progress/Progress';
+import NavBar from './components/NavBar/NavBar';
 import useAsyncState from './Util/asyncState';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
@@ -24,15 +24,26 @@ function App() {
   const [term, setTerm] = useState('');
   const [navBarType, setNavBarType] = useState(null);
   const [displayProgress, setDisplayProgress] = useState(false);
+  const [displayGetMoreBtn, setDisplayGetMoreBtn] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-      <TopMenu 
+        <TopMenu 
           topMenuOpen={topMenuOpen} 
           setTopMenuOpen={setTopMenuOpen} 
-      />
-      <Progress displayProgress={displayProgress} />
+        />
+        <NavBar
+          term={term}
+          source={source}
+          setTerm={setTerm}  
+          navBarType={navBarType}
+          displayProgress={displayProgress}
+          setSource={setSource} 
+          setTopMenuOpen={setTopMenuOpen}
+          setImgURIs={setImgURIs} 
+          setDisplayGetMoreBtn={setDisplayGetMoreBtn}
+        />
         <Route 
           exact path='/' 
           render={() => <Home 
@@ -43,12 +54,11 @@ function App() {
             setPage={setPage}
             page={page} 
             source={source}
-            setSource={setSource}
             term={term}
-            setTerm={setTerm}
             navBarType={navBarType}
             setNavBarType={setNavBarType}
             setDisplayProgress={setDisplayProgress}
+            displayGetMoreBtn={displayGetMoreBtn}
             />
           } 
         />
@@ -56,9 +66,7 @@ function App() {
           path='/selected' 
           render={() => <Selected 
             selectedImgs={selectedImgs} 
-            setTopMenuOpen={setTopMenuOpen}
             setSelectedImgs={setSelectedImgs} 
-            navBarType={navBarType}
             setNavBarType={setNavBarType}
             setDisplayProgress={setDisplayProgress}
             />
