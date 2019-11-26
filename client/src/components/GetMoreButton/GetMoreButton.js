@@ -12,12 +12,16 @@ const useStyles = makeStyles(() => ({
 function GetMoreButton(props) {
   const classes = useStyles();
   
-  if (!props.getMoreBtn) {
+  if (!props.displayGetMoreBtn) {
     return null;
   }
 
   function handleClick() {
-    props.setPage(props.page + 1).then((page) => props.getImgURIs(page));
+    if (props.imgURIs.size && props.term !== '') {
+      props.setPage(props.page + 1).then((page) => {
+        props.getImgURIs({term: props.term, page: page, source: props.source}, props.setImgURIs);
+      });
+    } 
   }
 
   return (
