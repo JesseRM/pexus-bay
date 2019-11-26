@@ -29,7 +29,6 @@ export default function SourceMenu(props) {
   function handleItemClick(event) {
     props.setSource(event.currentTarget.textContent.toLowerCase());
     setAnchorEl(null);
-    props.setGetMoreBtn(false);
 
     if (selectedMenuItem) {
       selectedMenuItem.classList.remove(classes.menuItem);
@@ -39,6 +38,7 @@ export default function SourceMenu(props) {
     }
 
     setSelectedMenuItem(event.currentTarget);
+    props.setDisplayGetMoreBtn(false);
   }
 
   return (
