@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import PictureMenu from '../PictureMenu/PictureMenu';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import CardActionArea from '@material-ui/core/CardActionArea';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,9 +41,15 @@ function Pictures(props) {
   let pictureCards;
 
   function handleMoreIconClick(event) {
+    event.stopPropagation();
+    
     setAnchorEl(event.currentTarget);
     setPictureMenuOpen(true);
     setClickedImg([...props.imgURIs][event.currentTarget.attributes['data-index'].value])
+  }
+
+  function handleImgClick(imgURI) {
+    props.setImgPreviewURI(imgURI);
   }
   
   if (props.imgURIs.size) {
@@ -52,11 +59,13 @@ function Pictures(props) {
     props.imgURIs.forEach((img) => {
       pictureCards.push((
         <Card className={classes.card} key={key}>
-          <CardMedia className={classes.media} image={img.thumb} >
-            <IconButton color='secondary' onClick={handleMoreIconClick} data-index={key}>
-              <MoreVertIcon />
-            </IconButton>
-          </CardMedia>
+          <CardActionArea>
+            <CardMedia className={classes.media} image={img.thumb} onClick={() => handleImgClick(img.medium)} >
+              <IconButton color='secondary' onClick={handleMoreIconClick} data-index={key}>
+                <MoreVertIcon />
+              </IconButton>
+            </CardMedia>
+          </CardActionArea>
         </Card>
       ));
 
