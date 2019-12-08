@@ -5,6 +5,7 @@ import Selected from './routes/Selected/Selected';
 import TopMenu from './components/TopMenu/TopMenu';
 import NavBar from './components/NavBar/NavBar';
 import useAsyncState from './Util/asyncState';
+import PicturePreview from './components/PicturePreview/PicturePreview';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
@@ -25,6 +26,7 @@ function App() {
   const [navBarType, setNavBarType] = useState(null);
   const [displayProgress, setDisplayProgress] = useState(false);
   const [displayGetMoreBtn, setDisplayGetMoreBtn] = useState(false);
+  const [imgPreviewURI, setImgPreviewURI] = useState(null);
 
   return (
     <ThemeProvider theme={theme}>
@@ -44,6 +46,10 @@ function App() {
           setImgURIs={setImgURIs} 
           setDisplayGetMoreBtn={setDisplayGetMoreBtn}
         />
+        <PicturePreview
+          imgPreviewURI={imgPreviewURI}
+          setImgPreviewURI={setImgPreviewURI}
+        />
         <Route 
           exact path='/' 
           render={() => <Home 
@@ -59,6 +65,7 @@ function App() {
             setNavBarType={setNavBarType}
             setDisplayProgress={setDisplayProgress}
             displayGetMoreBtn={displayGetMoreBtn}
+            setImgPreviewURI={setImgPreviewURI}
             />
           } 
         />
@@ -69,6 +76,7 @@ function App() {
             setSelectedImgs={setSelectedImgs} 
             setNavBarType={setNavBarType}
             setDisplayProgress={setDisplayProgress}
+            setImgPreviewURI={setImgPreviewURI}
             />
           } 
         />  
