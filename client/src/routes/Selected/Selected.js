@@ -19,6 +19,7 @@ function Selected(props) {
         imgURIs={props.selectedImgs}
         setSelectedImgs={props.setSelectedImgs} 
         setDisplayZipBtn={setDisplayZipBtn}
+        setImgPreviewURI={props.setImgPreviewURI}
       />
     </div>
   )
