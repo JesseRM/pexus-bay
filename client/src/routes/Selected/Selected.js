@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Pictures from '../../components/Pictures/Pictures';
 import CreateZipButton from '../../components/CreateZipButton/CreateZipButton';
+import UserInstructions from '../../components/userInstructions/UserInstructions';
 
 function Selected(props) {
   useEffect(() => {
@@ -10,6 +11,9 @@ function Selected(props) {
 
   return (
     <div>
+      {props.selectedImgs.size === 0 &&
+        <UserInstructions type={'selected'} />
+      }
       <CreateZipButton 
         displayZipBtn={displayZipBtn}
         selectedImgs={props.selectedImgs}
