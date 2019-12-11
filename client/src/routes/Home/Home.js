@@ -12,7 +12,7 @@ function Home(props) {
   return (
     <React.Fragment>
       {props.imgURIs.size === 0 &&
-        <UserInstructions />
+        <UserInstructions type={'home'} />
       }
       <Pictures 
         imgURIs={props.imgURIs}
