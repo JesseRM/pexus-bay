@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Pictures from '../../components/Pictures/Pictures';
 import GetMoreButton from '../../components/GetMoreButton/GetMoreButton';
-import UserInstructions from '../../components/userInstructions/UserInstructions';
+import UserInstructions from '../../components/UserInstructions/UserInstructions';
 import getImgURIs from '../../Util/getImgURIs';
 
 function Home(props) {
