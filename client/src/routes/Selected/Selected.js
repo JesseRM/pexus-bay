@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Pictures from '../../components/Pictures/Pictures';
 import CreateZipButton from '../../components/CreateZipButton/CreateZipButton';
-import UserInstructions from '../../components/userInstructions/UserInstructions';
+import UserInstructions from '../../components/UserInstructions/UserInstructions';
 
 function Selected(props) {
   useEffect(() => {
