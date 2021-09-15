@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
-import PictureMenu from '../PictureMenu/PictureMenu';
-import IconButton from '@material-ui/core/IconButton';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CardActionArea from '@material-ui/core/CardActionArea';
 
 const useStyles = makeStyles((theme) => ({
@@ -35,21 +32,11 @@ const useStyles = makeStyles((theme) => ({
 
 function Pictures(props) {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [clickedImg, setClickedImg] = useState(null);
-  const [pictureMenuOpen, setPictureMenuOpen] = useState(false);
   let pictureCards;
 
-  function handleMoreIconClick(event) {
-    event.stopPropagation();
-    
-    setAnchorEl(event.currentTarget);
-    setPictureMenuOpen(true);
-    setClickedImg([...props.imgURIs][event.currentTarget.attributes['data-index'].value])
-  }
-
-  function handleImgClick(imgURI) {
+  function handleImgClick(event, imgURI) {
     props.setImgPreviewURI(imgURI);
+    props.setClickedImg([...props.imgURIs][event.currentTarget.attributes['data-index'].value]);
   }
   
   if (props.imgURIs.size) {
@@ -60,11 +47,12 @@ function Pictures(props) {
       pictureCards.push((
         <Card className={classes.card} key={key}>
           <CardActionArea>
-            <CardMedia className={classes.media} image={img.thumb} onClick={() => handleImgClick(img.medium)} >
-              <IconButton color='secondary' onClick={handleMoreIconClick} data-index={key}>
-                <MoreVertIcon />
-              </IconButton>
-            </CardMedia>
+            <CardMedia 
+              className={classes.media} 
+              image={img.thumb} 
+              data-index={key}
+              onClick={(event) => handleImgClick(event, img.medium)} 
+            />
           </CardActionArea>
         </Card>
       ));
@@ -76,17 +64,6 @@ function Pictures(props) {
   return (
     <div className={classes.root}>
       {pictureCards}
-      <PictureMenu 
-        anchorEl={anchorEl} 
-        setAnchorEl={setAnchorEl} 
-        setSelectedImgs={props.setSelectedImgs}
-        pictureMenuOpen={pictureMenuOpen}
-        setPictureMenuOpen={setPictureMenuOpen} 
-        imgURIs={props.imgURIs}
-        clickedImg={clickedImg}
-        setDisplayZipBtn={props.setDisplayZipBtn}
-        setDisplayProgress={props.setDisplayProgress}
-      />
     </div>
   )
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
-import CardHeader from '@material-ui/core/CardHeader';
 import CloseIcon from '@material-ui/icons/Close';
-import CardActionArea from '@material-ui/core/CardActionArea';
+import IconButton from '@material-ui/core/IconButton';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,9 +23,19 @@ const useStyles = makeStyles((theme) => ({
       height: '36rem'
     }
   },
+  btnContainer: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
   media: {
     width: '100%',
     height: '100%'
+  },
+  moreVertIcon: {
+    float: 'left',
+  },
+  closeIcon: {
+    float: 'right'
   }
 }));
 
@@ -52,16 +62,24 @@ function PicturePreview(props) {
   function handleCloseClick() {
     props.setImgPreviewURI(null);
   }
+
+  function handleMoreIconClick(event) {
+    event.stopPropagation();
+    
+    props.setAnchorEl(event.currentTarget);
+    props.setPictureMenuOpen(true);
+  }
   
   return (
     <Card className={classes.card} style={{top: top, left: left}}>
-      <CardHeader 
-        action={
-          <CardActionArea>
-            <CloseIcon onClick={handleCloseClick} />
-          </CardActionArea>
-        }
-      />
+      <div className={classes.btnContainer}>
+        <IconButton>
+          <MoreVertIcon color='secondary' onClick={handleMoreIconClick} />
+        </IconButton>
+        <IconButton>
+          <CloseIcon onClick={handleCloseClick} />
+        </IconButton> 
+      </div>
       <CardMedia
         image={props.imgPreviewURI} className={classes.media}
       />
