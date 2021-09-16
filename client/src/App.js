@@ -11,7 +11,7 @@ import { ThemeProvider } from '@material-ui/styles';
 const theme = createMuiTheme({
   palette: {
     primary: { main: '#056ac8' }, 
-    secondary: { main: '#C86305' }, 
+    secondary: { main: '#C86305' }
   },
 });
 
@@ -35,10 +35,10 @@ function App() {
         />
         <NavBar
           term={term}
-          source={source}
-          setTerm={setTerm}  
+          source={source}  
           navBarType={navBarType}
           displayProgress={displayProgress}
+          setTerm={setTerm}
           setSource={setSource} 
           setTopMenuOpen={setTopMenuOpen}
           setImgURIs={setImgURIs} 
@@ -48,17 +48,17 @@ function App() {
           exact path='/' 
           render={() => <Home 
             imgURIs={imgURIs} 
-            setImgURIs={setImgURIs} 
-            setTopMenuOpen={setTopMenuOpen} 
-            setSelectedImgs={setSelectedImgs}
-            setPage={setPage}
             page={page} 
             source={source}
             term={term}
+            displayGetMoreBtn={displayGetMoreBtn}
             navBarType={navBarType}
+            setImgURIs={setImgURIs} 
+            setPage={setPage}
+            setTopMenuOpen={setTopMenuOpen} 
+            setSelectedImgs={setSelectedImgs}
             setNavBarType={setNavBarType}
             setDisplayProgress={setDisplayProgress}
-            displayGetMoreBtn={displayGetMoreBtn}
             />
           } 
         />
