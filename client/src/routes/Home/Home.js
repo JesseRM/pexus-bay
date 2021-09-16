@@ -36,24 +36,24 @@ function Home(props) {
       />
       <PictureMenu 
         anchorEl={anchorEl} 
-        setAnchorEl={setAnchorEl} 
-        setSelectedImgs={props.setSelectedImgs}
         pictureMenuOpen={pictureMenuOpen}
-        setPictureMenuOpen={setPictureMenuOpen} 
         imgURIs={props.imgURIs}
         clickedImg={clickedImg}
+        setAnchorEl={setAnchorEl} 
+        setPictureMenuOpen={setPictureMenuOpen}
+        setSelectedImgs={props.setSelectedImgs}
         setDisplayZipBtn={props.setDisplayZipBtn}
         setDisplayProgress={props.setDisplayProgress}
       />
       <GetMoreButton 
+        imgURIs={props.imgURIs} 
         page={props.page}
         term={props.term}
         source={props.source}
-        imgURIs={props.imgURIs} 
-        getImgURIs={getImgURIs} 
-        setPage={props.setPage} 
-        setImgURIs={props.setImgURIs}
         displayGetMoreBtn={props.displayGetMoreBtn}
+        setImgURIs={props.setImgURIs}
+        setPage={props.setPage} 
+        getImgURIs={getImgURIs}  
       />
     </React.Fragment>
   )

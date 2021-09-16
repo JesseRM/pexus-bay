@@ -76,10 +76,10 @@ function PictureMenu(props) {
       </Menu>
       <DownloadMenu 
         anchorEl={props.anchorEl} 
+        clickedImg={props.clickedImg}
         downloadMenuOpen={downloadMenuOpen} 
         setDownloadMenuOpen={setDownloadMenuOpen}
         setPictureMenuOpen={props.setPictureMenuOpen}
-        clickedImg={props.clickedImg}
         setDisplayProgress={props.setDisplayProgress}  
       />
     </React.Fragment>

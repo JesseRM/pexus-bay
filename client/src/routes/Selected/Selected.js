@@ -23,8 +23,8 @@ function Selected(props) {
       }
       <CreateZipButton 
         displayZipBtn={displayZipBtn}
-        selectedImgs={props.selectedImgs}
         setDisplayProgress={props.setDisplayProgress}
+        selectedImgs={props.selectedImgs}
       />
       <Pictures 
         imgURIs={props.selectedImgs}
@@ -41,12 +41,12 @@ function Selected(props) {
       />
       <PictureMenu 
         anchorEl={anchorEl} 
-        setAnchorEl={setAnchorEl} 
-        setSelectedImgs={props.setSelectedImgs}
         pictureMenuOpen={pictureMenuOpen}
-        setPictureMenuOpen={setPictureMenuOpen} 
         imgURIs={props.imgURIs}
         clickedImg={clickedImg}
+        setAnchorEl={setAnchorEl} 
+        setPictureMenuOpen={setPictureMenuOpen}
+        setSelectedImgs={props.setSelectedImgs}
         setDisplayZipBtn={setDisplayZipBtn}
         setDisplayProgress={props.setDisplayProgress}
       />
