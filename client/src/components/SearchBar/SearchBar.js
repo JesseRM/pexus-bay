@@ -1,7 +1,9 @@
 import React from 'react';
 import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import getImgURIs from '../../Util/getImgURIs';
+import { IconButton } from '@material-ui/core';
 
 const userStyles = makeStyles((theme) => ({
   search: {
@@ -26,7 +28,15 @@ const userStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       width: 300,
     }
-  }
+  },
+  searchIcon: {
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 }));
 
 function SearchBar(props) {
@@ -35,16 +45,25 @@ function SearchBar(props) {
 
   function handleKeyPress(event) {
     if (event.keyCode === ENTER_KEY) {
-      if (props.term !== '') {
-        getImgURIs({term: props.term, page: 1, source: props.source}, props.setImgURIs);
-        window.scrollTo(0, 0);
-        props.setDisplayGetMoreBtn(true);
-      }
+      attemptSearch();
+    }
+  }
+
+  function attemptSearch() {
+    if (props.term !== '') {
+      getImgURIs({term: props.term, page: 1, source: props.source}, props.setImgURIs);
+      window.scrollTo(0, 0);
+      props.setDisplayGetMoreBtn(true);
     }
   }
   
   return (
     <div className={classes.search}>
+      <div className={classes.searchIcon}>
+        <IconButton onClick={() => attemptSearch()}>
+          <SearchIcon />
+        </IconButton>
+      </div>
       <InputBase
           placeholder={`${props.term ? props.term : 'Search images...'}`}
           classes={{
