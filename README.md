@@ -7,6 +7,8 @@ images need to be loaded based on the source the user has chosen. If the user ch
 be downloaded per the users choice. Another major challenge was to allow the user to downlaod a single zip file of all the images he/she has
 selected.
 
+<img src="https://raw.githubusercontent.com/JesseRM/pexus-bay/master/screenshot/pexus_bay.JPG" width="600">
+
 ## Usage
 [Live Demo](http://pexusbay.herokuapp.com/)
 
