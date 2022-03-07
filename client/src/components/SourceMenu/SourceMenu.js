@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import PexusBayContext from '../../context/PexusBayContext';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -13,8 +14,9 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function SourceMenu(props) {
+export default function SourceMenu() {
   const classes = useStyles();
+  const {source, setSource, setDisplayGetMoreBtn} = useContext(PexusBayContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedMenuItem, setSelectedMenuItem] = useState(null);
 
@@ -27,7 +29,7 @@ export default function SourceMenu(props) {
   }
 
   function handleItemClick(event) {
-    props.setSource(event.currentTarget.textContent.toLowerCase());
+    setSource(event.currentTarget.textContent.toLowerCase());
     setAnchorEl(null);
 
     if (selectedMenuItem) {
@@ -38,7 +40,7 @@ export default function SourceMenu(props) {
     }
 
     setSelectedMenuItem(event.currentTarget);
-    props.setDisplayGetMoreBtn(false);
+    setDisplayGetMoreBtn(false);
   }
 
   return (
@@ -55,26 +57,26 @@ export default function SourceMenu(props) {
       >
         <MenuItem 
           onClick={handleItemClick} 
-          className={props.source === 'pixabay' ? classes.menuItem : null}
+          className={source === 'pixabay' ? classes.menuItem : null}
         > 
           <PixabayIcon />
           Pixabay
         </MenuItem>
         <MenuItem 
           onClick={handleItemClick}
-          className={props.source === 'pexels' ? classes.menuItem : null}
+          className={source === 'pexels' ? classes.menuItem : null}
         >
           <PexelsIcon />
           Pexels
         </MenuItem>
         <MenuItem 
           onClick={handleItemClick}
-          className={props.source === 'unsplash' ? classes.menuItem : null}
+          className={source === 'unsplash' ? classes.menuItem : null}
         >
           <UnsplashIcon />
           Unsplash
         </MenuItem>
       </Menu>
     </React.Fragment>
-  );
+  )
 }

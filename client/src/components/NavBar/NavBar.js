@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import PexusBayContext from '../../context/PexusBayContext';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -28,45 +29,33 @@ const userStyles = makeStyles((theme) => ({
   }
 }));
 
-function NavBar(props) {
+function NavBar() {
   const classes = userStyles();
+  const {setTopMenuOpen, navBarType} = useContext(PexusBayContext);
   
   return (
     <div className={classes.root}>
       <AppBar position='relative'>
         <Toolbar>
-          <IconButton onClick={() => props.setTopMenuOpen(true)}>
+          <IconButton onClick={() => setTopMenuOpen(true)}>
             <MenuIcon />
           </IconButton>
           <Typography 
-            className={props.navBarType === 'home' ? classes.titleHome : classes.title} 
+            className={navBarType === 'home' ? classes.titleHome : classes.title} 
             variant="h6" 
             noWrap
           >
             Pexus Bay
           </Typography>
-          {props.navBarType === 'home' &&
-            <SearchBar
-              term={props.term}
-              source={props.source} 
-              setTerm={props.setTerm} 
-              getImgURIs={props.getImgURIs} 
-              setGetMoreBtn={props.setGetMoreBtn}
-              setImgURIs={props.setImgURIs} 
-              setDisplayGetMoreBtn={props.setDisplayGetMoreBtn}
-            />
+          {navBarType === 'home' &&
+            <SearchBar />
           }
-          {props.navBarType === 'home' &&
-            <SourceMenu 
-              source={props.source}
-              setSource={props.setSource} 
-              setGetMoreBtn={props.setGetMoreBtn}
-              setDisplayGetMoreBtn={props.setDisplayGetMoreBtn} 
-            />
+          {navBarType === 'home' &&
+            <SourceMenu />
           }
         </Toolbar>
       </AppBar>
-      <Progress displayProgress={props.displayProgress} />
+      <Progress />
     </div>
   )
 }

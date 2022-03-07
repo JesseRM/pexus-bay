@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import PexusBayContext from '../../context/PexusBayContext.js';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function PictureMenu(props) {
+  const {setSelectedImgs} = useContext(PexusBayContext);
   const [downloadMenuOpen, setDownloadMenuOpen] = useState(false);
   const classes = useStyles();
 
@@ -23,7 +25,7 @@ function PictureMenu(props) {
   }
 
   function handleSelectClick() {
-    props.setSelectedImgs((selectedImgs) => {
+    setSelectedImgs((selectedImgs) => {
       selectedImgs.add(props.clickedImg);
 
       return selectedImgs;
@@ -37,7 +39,7 @@ function PictureMenu(props) {
   }
 
   function handleRemoveClick() {
-    props.setSelectedImgs((selectedImgs) => {
+    setSelectedImgs((selectedImgs) => {
       selectedImgs.delete(props.clickedImg);
       props.setDisplayZipBtn(selectedImgs.size);
       
@@ -79,8 +81,7 @@ function PictureMenu(props) {
         clickedImg={props.clickedImg}
         downloadMenuOpen={downloadMenuOpen} 
         setDownloadMenuOpen={setDownloadMenuOpen}
-        setPictureMenuOpen={props.setPictureMenuOpen}
-        setDisplayProgress={props.setDisplayProgress}  
+        setPictureMenuOpen={props.setPictureMenuOpen} 
       />
     </React.Fragment>
   )

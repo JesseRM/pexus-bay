@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import PexusBayContext from '../../context/PexusBayContext';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import getImgURIs from '../../Util/getImgURIs';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -11,15 +13,22 @@ const useStyles = makeStyles(() => ({
 
 function GetMoreButton(props) {
   const classes = useStyles();
+  const {
+          displayGetMoreBtn, 
+          imgURIs, setImgURIs, 
+          term, 
+          page, setPage,
+          source
+        } = useContext(PexusBayContext);
   
-  if (!props.displayGetMoreBtn) {
+  if (!displayGetMoreBtn) {
     return null;
   }
 
   function handleClick() {
-    if (props.imgURIs.size && props.term !== '') {
-      props.setPage(props.page + 1).then((page) => {
-        props.getImgURIs({term: props.term, page: page, source: props.source}, props.setImgURIs);
+    if (imgURIs.size && term !== '') {
+      setPage(page + 1).then((page) => {
+        getImgURIs({term: term, page: page, source: source}, setImgURIs);
       });
     } 
   }

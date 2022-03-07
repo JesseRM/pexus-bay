@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import PexusBayContext from '../../context/PexusBayContext';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -12,6 +13,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 function CreateZipButton(props) {
+  const {setDisplayProgress, selectedImgs} = useContext(PexusBayContext);
   const classes = useStyles();
 
   if (!props.displayZipBtn) {
@@ -20,14 +22,14 @@ function CreateZipButton(props) {
   }
 
   function handleClick() {
-    props.setDisplayProgress(true);
+    setDisplayProgress(true);
     
     fetch('/api/images/download/zip', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify([...props.selectedImgs])
+      body: JSON.stringify([...selectedImgs])
     }).then((response) => {
       response.blob().then((blob) => {
         const anchorEl = document.createElement('a');
@@ -40,7 +42,7 @@ function CreateZipButton(props) {
         URL.revokeObjectURL(anchorEl.href);
         document.body.removeChild(anchorEl);
 
-        props.setDisplayProgress(false);
+        setDisplayProgress(false);
       });
     });
   }

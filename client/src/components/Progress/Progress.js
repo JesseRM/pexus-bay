@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import PexusBayContext from '../../context/PexusBayContext';
 
 function Progress(props) {
-  if (!props.displayProgress) {
+  const {displayProgress} = useContext(PexusBayContext);
+
+  if (!displayProgress) {
     return null;
   }
 

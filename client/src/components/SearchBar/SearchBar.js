@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import PexusBayContext from '../../context/PexusBayContext';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import { makeStyles, fade } from '@material-ui/core/styles';
@@ -39,9 +40,15 @@ const userStyles = makeStyles((theme) => ({
   },
 }));
 
-function SearchBar(props) {
+function SearchBar() {
   const ENTER_KEY = 13;
   const classes = userStyles();
+  const {
+          term, setTerm,
+          source,
+          setImgURIs,
+          setDisplayGetMoreBtn
+        } = useContext(PexusBayContext);
 
   function handleKeyPress(event) {
     if (event.keyCode === ENTER_KEY) {
@@ -50,10 +57,10 @@ function SearchBar(props) {
   }
 
   function attemptSearch() {
-    if (props.term !== '') {
-      getImgURIs({term: props.term, page: 1, source: props.source}, props.setImgURIs);
+    if (term !== '') {
+      getImgURIs({term: term, page: 1, source: source}, setImgURIs);
       window.scrollTo(0, 0);
-      props.setDisplayGetMoreBtn(true);
+      setDisplayGetMoreBtn(true);
     }
   }
   
@@ -65,11 +72,11 @@ function SearchBar(props) {
         </IconButton>
       </div>
       <InputBase
-          placeholder={`${props.term ? props.term : 'Search images...'}`}
+          placeholder={`${term ? term : 'Search images...'}`}
           classes={{
             input: classes.inputInput,
           }}
-          onChange={(event) => props.setTerm(event.target.value)}
+          onChange={(event) => setTerm(event.target.value)}
           onKeyDown={handleKeyPress}
       />
     </div>

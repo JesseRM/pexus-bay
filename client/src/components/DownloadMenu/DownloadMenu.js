@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import getImageBlob from '../../Util/getImageBlob';
 import filenameFromURI from '../../Util/filenameFromURI';
 import createAnchorElFromBlob from '../../Util/createAnchorElFromBlob';
 import startFileDownload from '../../Util/startFileDownload';
+import PexusBayContext from '../../context/PexusBayContext';
 
 function DownloadMenu(props) {
+  const {setDisplayProgress} = useContext(PexusBayContext);
+  
   function handleItemClick(event) {
     const imageQuality = event.currentTarget.textContent.toLowerCase();
 
-    props.setDisplayProgress(true);
+    setDisplayProgress(true);
 
     downloadImage(props.clickedImg[imageQuality]);
 
@@ -31,7 +34,7 @@ function DownloadMenu(props) {
 
       startFileDownload(anchorImageEl);
 
-      props.setDisplayProgress(false);
+      setDisplayProgress(false);
     });
   }
   
