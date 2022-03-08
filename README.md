@@ -1,5 +1,5 @@
 # Pexus Bay
-A simple hub for searching and downloading free stock images from popular sites.
+A single-page application for searching and downloading free stock images from popular sites.
 
 The purpose of this project was to learn how to create an app using React. The choice was made to use hooks in creating components instead 
 of the traditional classes. One of the main challenges in creating this app was to ensure proper display and downlaod of images. Proper 
