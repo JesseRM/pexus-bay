@@ -21,7 +21,7 @@ function Selected() {
   return (
     <div>
       {selectedImgs.size === 0 &&
-        <UserInstructions type={'selected'} />
+        <UserInstructions />
       }
       <CreateZipButton 
         displayZipBtn={displayZipBtn}

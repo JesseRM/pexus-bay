@@ -2,9 +2,9 @@ import React, { useEffect, useState, useContext } from 'react';
 import PexusBayContext from '../../context/PexusBayContext';
 import Pictures from '../../components/Pictures/Pictures';
 import GetMoreButton from '../../components/GetMoreButton/GetMoreButton';
-import UserInstructions from '../../components/UserInstructions/UserInstructions';
 import PicturePreview from '../../components/PicturePreview/PicturePreview';
 import PictureMenu from '../../components/PictureMenu/PictureMenu';
+import WelcomeScreen from '../../components/WelcomeScreen/WelcomeScreen';
 
 function Home() {
   const {setNavBarType, imgURIs} = useContext(PexusBayContext);
@@ -20,7 +20,7 @@ function Home() {
   return (
     <React.Fragment>
       {imgURIs.size === 0 &&
-        <UserInstructions type={'home'} />
+        <WelcomeScreen />
       }
       <Pictures
         imgURIs={imgURIs} 

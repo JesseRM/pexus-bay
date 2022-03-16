@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import getImageBlob from '../../Util/getImageBlob';
-import filenameFromURI from '../../Util/filenameFromURI';
-import createAnchorElFromBlob from '../../Util/createAnchorElFromBlob';
-import startFileDownload from '../../Util/startFileDownload';
+import getImageBlob from '../../util/getImageBlob';
+import filenameFromURI from '../../util/filenameFromURI';
+import createAnchorElFromBlob from '../../util/createAnchorElFromBlob';
+import startFileDownload from '../../util/startFileDownload';
 import PexusBayContext from '../../context/PexusBayContext';
 
 function DownloadMenu(props) {

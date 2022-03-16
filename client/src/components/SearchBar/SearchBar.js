@@ -3,7 +3,7 @@ import PexusBayContext from '../../context/PexusBayContext';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import { makeStyles, fade } from '@material-ui/core/styles';
-import getImgURIs from '../../Util/getImgURIs';
+import getImgURIs from '../../util/getImgURIs';
 import { IconButton } from '@material-ui/core';
 
 const userStyles = makeStyles((theme) => ({

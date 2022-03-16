@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PexusBayContext from '../../context/PexusBayContext';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import getImgURIs from '../../Util/getImgURIs';
+import getImgURIs from '../../util/getImgURIs';
 
 const useStyles = makeStyles(() => ({
   root: {
