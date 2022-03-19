@@ -45,7 +45,11 @@ export default function SourceMenu() {
 
   return (
     <React.Fragment>
-      <Button onClick={handleSourceBtnClick}>
+      <Button 
+        variant="contained" 
+        color="secondary" 
+        onClick={handleSourceBtnClick}
+      >
         Source
       </Button>
       
