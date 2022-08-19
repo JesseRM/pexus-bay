@@ -25,6 +25,8 @@ function getPixabayURIs(req, res) {
     })
     .catch((error) => {
       console.log(error);
+      res.status(504);
+      res.send({error: "Unable to retrieve image URLs."});
     });
 }
 
@@ -58,6 +60,8 @@ function getPexelsURIs(req, res) {
     })
     .catch((error) => {
       console.log(error);
+      res.status(504);
+      res.send({error: "Unable to retrieve image URLs."});
     })
 }
 
@@ -86,7 +90,9 @@ function getUnsplashURIs(req, res) {
     })
     .catch((error) => {
       console.log(error);
-    })
+      res.status(504);
+      res.send({error: "Unable to retrieve image URLs."});
+    });
 }
 
 module.exports = {
