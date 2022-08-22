@@ -44,11 +44,11 @@ function SearchBar() {
   const ENTER_KEY = 13;
   const classes = userStyles();
   const {
-          term, setTerm,
-          source,
-          setImgURIs,
-          setDisplayGetMoreBtn
-        } = useContext(PexusBayContext);
+    term, setTerm,
+    source,
+    setImgURIs,
+    setDisplayGetMoreBtn
+  } = useContext(PexusBayContext);
 
   function handleKeyPress(event) {
     if (event.keyCode === ENTER_KEY) {
@@ -58,9 +58,14 @@ function SearchBar() {
 
   function attemptSearch() {
     if (term !== '') {
-      getImgURIs({term: term, page: 1, source: source}, setImgURIs);
-      window.scrollTo(0, 0);
-      setDisplayGetMoreBtn(true);
+      try {
+        getImgURIs({term: term, page: 1, source: source}, setImgURIs);
+        window.scrollTo(0, 0);
+        setDisplayGetMoreBtn(true);
+      } catch (error) {
+        console.log(error);
+        alert("Sorry, looks like something went wrong. Please try again.");
+      }
     }
   }
   

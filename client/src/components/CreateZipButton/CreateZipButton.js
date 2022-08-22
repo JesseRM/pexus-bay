@@ -23,15 +23,24 @@ function CreateZipButton(props) {
 
   function handleClick() {
     setDisplayProgress(true);
-    
-    fetch('/api/images/download/zip', {
+
+    const options = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify([...selectedImgs])
-    }).then((response) => {
-      response.blob().then((blob) => {
+    }
+    
+    fetch('/api/images/download/zip', options)
+      .then((response) => {
+        if (response.status >= 200 && response.status <= 299) {
+          return response.blob();
+        } else {
+          throw new Error("Error retrieving zip file.");
+        }
+      })
+      .then((blob) => {
         const anchorEl = document.createElement('a');
 
         anchorEl.href = URL.createObjectURL(blob);
@@ -43,8 +52,12 @@ function CreateZipButton(props) {
         document.body.removeChild(anchorEl);
 
         setDisplayProgress(false);
-      });
-    });
+      })
+      .catch((error) => {
+        console.log(error);
+        setDisplayProgress(false);
+        alert("Sorry, looks like something went wrong. Please try again.");
+      })
   }
 
   return (

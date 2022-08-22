@@ -14,12 +14,12 @@ const useStyles = makeStyles(() => ({
 function GetMoreButton(props) {
   const classes = useStyles();
   const {
-          displayGetMoreBtn, 
-          imgURIs, setImgURIs, 
-          term, 
-          page, setPage,
-          source
-        } = useContext(PexusBayContext);
+    displayGetMoreBtn, 
+    imgURIs, setImgURIs, 
+    term, 
+    page, setPage,
+    source
+  } = useContext(PexusBayContext);
   
   if (!displayGetMoreBtn) {
     return null;
@@ -27,9 +27,15 @@ function GetMoreButton(props) {
 
   function handleClick() {
     if (imgURIs.size && term !== '') {
-      setPage(page + 1).then((page) => {
-        getImgURIs({term: term, page: page, source: source}, setImgURIs);
-      });
+      setPage(page + 1)
+        .then((page) => {
+          try {
+            getImgURIs({term: term, page: page, source: source}, setImgURIs);
+          } catch (error) {
+            console.log(error);
+            alert("Sorry, looks like something went wrong. Please try again.");
+          }
+        });
     } 
   }
 

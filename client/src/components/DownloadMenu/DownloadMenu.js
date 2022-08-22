@@ -29,13 +29,19 @@ function DownloadMenu(props) {
     let anchorImageEl;
     const filename = filenameFromURI(imageURI);
 
-    getImageBlob(imageURI).then((imageBlob) => {
-      anchorImageEl = createAnchorElFromBlob(imageBlob, {filename: filename, extension: '.jpg'});
+    getImageBlob(imageURI)
+      .then((imageBlob) => {
+        anchorImageEl = createAnchorElFromBlob(imageBlob, {filename: filename, extension: '.jpg'});
 
-      startFileDownload(anchorImageEl);
+        startFileDownload(anchorImageEl);
 
-      setDisplayProgress(false);
-    });
+        setDisplayProgress(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setDisplayProgress(false);
+        alert("Sorry, looks like something went wrong. Please try again.");
+      })
   }
   
   return (
