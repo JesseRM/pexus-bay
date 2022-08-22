@@ -2,9 +2,9 @@ import React, { useEffect, useState, useContext } from 'react';
 import PexusBayContext from '../../context/PexusBayContext';
 import Pictures from '../../components/Pictures/Pictures';
 import CreateZipButton from '../../components/CreateZipButton/CreateZipButton';
-import UserInstructions from '../../components/UserInstructions/UserInstructions';
 import PicturePreview from '../../components/PicturePreview/PicturePreview';
 import PictureMenu from '../../components/PictureMenu/PictureMenu';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
 function Selected() {
   const {setNavBarType, selectedImgs} = useContext(PexusBayContext);
@@ -13,6 +13,7 @@ function Selected() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [imgPreviewURI, setImgPreviewURI] = useState(null);
   const [pictureMenuOpen, setPictureMenuOpen] = useState(null);
+  const noSelectionMessage = "You have not selected any images yet.";
   
   useEffect(() => {
     setNavBarType('selected');
@@ -21,7 +22,7 @@ function Selected() {
   return (
     <div>
       {selectedImgs.size === 0 &&
-        <UserInstructions />
+        <ErrorMessage message={noSelectionMessage} />
       }
       <CreateZipButton 
         displayZipBtn={displayZipBtn}
