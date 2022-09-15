@@ -39,7 +39,7 @@ function createZip(req, res) {
   } catch (error) {
     console.log(error);
     res.status(500);
-    res.send({effor: "Error creating zip file."});
+    res.send({error: "Error creating zip file."});
   }
 }
 
