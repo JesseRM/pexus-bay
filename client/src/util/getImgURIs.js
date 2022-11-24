@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 function getImgURIs({term, page, source}, setImgURIs) {
-  axios.get(`/api/images/${source}/${term}/${page}`).then((URIs) => {
+  axios.get(`${process.env.BACKEND_URL}/api/images/${source}/${term}/${page}`).then((URIs) => {
     setImgURIs((prevURIs) => {
       let newURIs;
       

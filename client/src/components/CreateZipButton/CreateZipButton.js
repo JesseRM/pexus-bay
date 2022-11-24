@@ -32,7 +32,7 @@ function CreateZipButton(props) {
       body: JSON.stringify([...selectedImgs])
     }
     
-    fetch('/api/images/download/zip', options)
+    fetch(`${process.env.BACKEND_URl}/api/images/download/zip`, options)
       .then((response) => {
         if (response.status >= 200 && response.status <= 299) {
           return response.blob();
