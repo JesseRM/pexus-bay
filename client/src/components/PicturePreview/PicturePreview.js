@@ -73,11 +73,11 @@ function PicturePreview(props) {
   return (
     <Card className={classes.card} style={{top: top, left: left}}>
       <div className={classes.btnContainer}>
-        <IconButton>
-          <MoreVertIcon color='secondary' onClick={handleMoreIconClick} />
+        <IconButton onClick={handleMoreIconClick}>
+          <MoreVertIcon color='secondary' />
         </IconButton>
-        <IconButton>
-          <CloseIcon onClick={handleCloseClick} />
+        <IconButton onClick={handleCloseClick}>
+          <CloseIcon />
         </IconButton> 
       </div>
       <CardMedia
