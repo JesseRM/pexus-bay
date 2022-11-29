@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 function getImgURIs({term, page, source}, setImgURIs) {
-  axios.get(`${process.env.BACKEND_URL}/api/images/${source}/${term}/${page}`).then((URIs) => {
+  console.log(process.env.REACT_APP_BACKEND_URL);
+  axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/images/${source}/${term}/${page}`).then((URIs) => {
     setImgURIs((prevURIs) => {
       let newURIs;
       
