@@ -12,7 +12,7 @@ function Selected() {
   const [clickedImg, setClickedImg] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
   const [imgPreviewURI, setImgPreviewURI] = useState(null);
-  const [pictureMenuOpen, setPictureMenuOpen] = useState(null);
+  const [pictureMenuOpen, setPictureMenuOpen] = useState(false);
   const noSelectionMessage = "You have not selected any images yet.";
   
   useEffect(() => {

@@ -11,7 +11,7 @@ function Home() {
   const [imgPreviewURI, setImgPreviewURI] = useState(null);
   const [clickedImg, setClickedImg] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [pictureMenuOpen, setPictureMenuOpen] = useState(null);
+  const [pictureMenuOpen, setPictureMenuOpen] = useState(false);
   
   useEffect(() => {
     setNavBarType('home');
