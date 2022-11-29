@@ -5,11 +5,11 @@ import Selected from './routes/Selected/Selected';
 import TopMenu from './components/TopMenu/TopMenu';
 import NavBar from './components/NavBar/NavBar';
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { PexusBayProvider } from './context/PexusBayContext';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: { main: '#006ba1' }, 
     secondary: { main: '#C86305' },

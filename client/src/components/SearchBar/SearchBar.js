@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PexusBayContext from '../../context/PexusBayContext';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
-import { makeStyles, fade } from '@material-ui/core/styles';
+import { makeStyles, alpha } from '@material-ui/core/styles';
 import getImgURIs from '../../util/getImgURIs';
 import { IconButton } from '@material-ui/core';
 
@@ -10,9 +10,9 @@ const userStyles = makeStyles((theme) => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
