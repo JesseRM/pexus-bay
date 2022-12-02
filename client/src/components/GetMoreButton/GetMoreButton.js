@@ -18,7 +18,8 @@ function GetMoreButton(props) {
     imgURIs, setImgURIs, 
     term, 
     page, setPage,
-    source
+    source,
+    setDisplayProgress
   } = useContext(PexusBayContext);
   
   if (!displayGetMoreBtn) {
@@ -27,10 +28,27 @@ function GetMoreButton(props) {
 
   function handleClick() {
     if (imgURIs.size && term !== '') {
+      setDisplayProgress(true);
+
       setPage(page + 1)
         .then((page) => {
           try {
-            getImgURIs({term: term, page: page, source: source}, setImgURIs);
+            getImgURIs({term: term, page: page, source: source})
+              .then((URIs) => {
+                setImgURIs((prevURIs) => {
+                  let newURIs;
+                  
+                  if (page !== 1) {
+                    newURIs = new Set([...prevURIs, ...URIs]);
+                  } else {
+                    newURIs = new Set([...URIs]);
+                  }
+                  
+                  return newURIs;
+                });
+                
+                setDisplayProgress(false);
+              });
           } catch (error) {
             console.log(error);
             alert("Sorry, looks like something went wrong. Please try again.");

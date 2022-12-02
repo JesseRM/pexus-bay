@@ -48,7 +48,8 @@ function SearchBar() {
     term, setTerm,
     source,
     setImgURIs,
-    setDisplayGetMoreBtn
+    setDisplayGetMoreBtn,
+    setDisplayProgress
   } = useContext(PexusBayContext);
 
   function handleKeyPress(event) {
@@ -59,8 +60,14 @@ function SearchBar() {
 
   function attemptSearch() {
     if (term !== '') {
+      setDisplayProgress(true);
+
       try {
-        getImgURIs({term: term, page: 1, source: source}, setImgURIs);
+        getImgURIs({term: term, page: 1, source: source})
+          .then((imgURIs) => {
+            setImgURIs(new Set([...imgURIs]));
+            setDisplayProgress(false);
+          });
         window.scrollTo(0, 0);
         setDisplayGetMoreBtn(true);
       } catch (error) {
@@ -78,12 +85,12 @@ function SearchBar() {
         </IconButton>
       </div>
       <InputBase
-          placeholder={`${term ? term : 'Search images...'}`}
-          classes={{
-            input: classes.inputInput,
-          }}
-          onChange={(event) => setTerm(event.target.value)}
-          onKeyDown={handleKeyPress}
+        placeholder={`${term ? term : 'Search images...'}`}
+        classes={{
+          input: classes.inputInput,
+        }}
+        onChange={(event) => setTerm(event.target.value)}
+        onKeyDown={handleKeyPress}
       />
     </div>
   )
