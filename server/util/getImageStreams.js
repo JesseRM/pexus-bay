@@ -10,7 +10,6 @@ async function getImageStreams(imageURIs) {
           resolve(imageStream);
         })
         .catch((error) => {
-          console.log(error);
           reject(error);
         });
     });

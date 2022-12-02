@@ -19,28 +19,27 @@ function getImageBuffer(req, res) {
 function createZip(req, res) {
   const imageURIs = req.body;
   
-  try {
-    getImageStreams(imageURIs)
-      .then((imageStreams) => {
-        const archive = archiver('zip', {
-          zlib: { level: 9 } // Sets the compression level.
-        });
-        
-        for (let i = 0; i < imageStreams.length; i++) {
-          archive.append(imageStreams[i].data, { name: `file${i}.jpg` });
-        }
-        
-        res.attachment('images.zip');
-    
-        archive.finalize();
-    
-        archive.pipe(res);
+  getImageStreams(imageURIs)
+    .then((imageStreams) => {
+      const archive = archiver('zip', {
+        zlib: { level: 9 } // Sets the compression level.
       });
-  } catch (error) {
-    console.log(error);
-    res.status(500);
-    res.send({error: "Error creating zip file."});
-  }
+      
+      for (let i = 0; i < imageStreams.length; i++) {
+        archive.append(imageStreams[i].data, { name: `file${i}.jpg` });
+      }
+      
+      res.attachment('images.zip');
+  
+      archive.finalize();
+  
+      archive.pipe(res);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500);
+      res.send({error: "Error creating zip file."});
+    });
 }
 
 module.exports = {
