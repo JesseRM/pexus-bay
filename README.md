@@ -10,7 +10,7 @@ selected.
 <img src="https://raw.githubusercontent.com/JesseRM/pexus-bay/master/screenshot/pexus_bay.JPG" width="600">
 
 ## Usage
-[Live Demo](http://pexusbay.herokuapp.com/)
+[Live Demo](https://pexusbay.onrender.com)
 
 Pick a source by clicking on 'SOURCE' on the navigation bar.  Type in the term you would to search for and the page will be populated
 with relevant imanges from the chosen source. Each image has a 'more' icon that will allow you to download the image or send it to the
